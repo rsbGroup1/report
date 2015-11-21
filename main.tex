@@ -1,0 +1,237 @@
+%-----------------------------------------------------------------------
+% Main Styling
+%-----------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,oneside]{report} % Single side
+%\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
+
+
+%-----------------------------------------------------------------------
+% Packages
+%-----------------------------------------------------------------------
+
+\usepackage[]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{anysize}
+%\usepackage[toc,page]{appendix}
+\usepackage{array}
+\usepackage[english,USenglish]{babel}
+%\usepackage[magyar]{babel}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{enumitem} % Much more useful than the enumerate package. It lets one set the margins of teh environment
+\usepackage{epsfig}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{fixltx2e}
+\usepackage{float}
+\usepackage{graphicx}
+    \graphicspath{{figs/}}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage[numbers]{natbib}
+\usepackage[thmmarks]{ntheorem}
+\usepackage{sectsty}
+\usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
+\usepackage{subcaption}
+\usepackage{t1enc}
+\usepackage{tikz}
+    \usetikzlibrary{arrows,intersections,shadows,shapes}
+\usepackage{titlesec}
+\usepackage{todonotes}
+\usepackage{url}
+\usepackage{verbatim}
+
+
+
+%-----------------------------------------------------------------------
+% New Commands, Operators and Variables
+%-----------------------------------------------------------------------
+
+\newcommand{\documentTitle}{A Multi-robot Production Facility for 
+Packing LEGO Bricks}
+\newcommand{\documentSubtitle}{Subtitle Goes Here}
+\newcommand{\documentType}{Final Report}
+
+\newcommand{\institute}{University of Southern Denmark}
+\newcommand{\department}{Faculty of Engineering}
+\newcommand{\program}{MSc in Engineering, Robot Systems}
+\newcommand{\course}{Robot System Design}
+
+\newcommand{\authorOne}{Anders Bjørk}
+\newcommand{\authorTwo}{Dominik Weickgenannt}
+\newcommand{\authorThree}{Jorge Rodriguez Marin}
+\newcommand{\authorFour}{Martin Groth Albøge}
+\newcommand{\authorFive}{Steffen Ivan Nielsen}
+\newcommand{\authorSix}{Thor Stærk Stenvang}
+\newcommand{\authorSeven}{Timon Tomás}
+\newcommand{\authorEight}{Yonas Alizadeh}
+
+%\DeclareMathOperator*{\argmax}{arg\,max}
+%\DeclareMathOperator{\sign}{sgn}
+%\DeclareMathOperator{\rot}{rot}
+
+\definecolor{white}{rgb}{1, 1, 1}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{ColorH1}{rgb}{0.212,0.373,0.569}
+\definecolor{ColorH2}{rgb}{0.141,0.197,0.376}
+\definecolor{ColorH234}{rgb}{0.310,0.506,0.741}
+\definecolor{ColorOthers}{rgb}{0.141,0.247,0.376}
+
+
+
+%-----------------------------------------------------------------------
+% Page layout, and package setup
+%-----------------------------------------------------------------------
+
+\pagestyle{plain}
+\setlength{\parindent}{0pt} % Makes the text perspicuous, common formatting in documents written in English. ( Alteres the size of subsequent paragraph indents  )
+\setlength{\parskip}{8pt plus 3pt minus 3pt} % Makes the text perspicuous, common formatting in documents written in English ( Alteres the extra vertical space inserted before a paragraph, which can have a default dimension, plus an amount of expansion and minus an amount of contraction. These are the parameters. )
+\marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
+\setcounter{secnumdepth}{0}
+\sectionfont{\large\upshape\bfseries}
+\setcounter{secnumdepth}{2}
+\singlespacing
+\frenchspacing
+
+
+% Setting up hyperref package
+\hypersetup{
+    bookmarks=true,            				% show bookmarks bar?
+    unicode=false,             				% non-Latin characters in Acrobat's bookmarks
+    pdftitle={\documentTitle},     			% title
+    pdfauthor={\authorOne and \authorTwo},	% author
+    pdfsubject={\documentType}, 				% subject of the document
+    pdfcreator={\authorOne and \authorTwo},  	% creator of the document
+    pdfproducer={Producer},   					% producer of the document
+    pdfkeywords={keywords},    				% list of keywords
+    pdfnewwindow=true,         				% links in new window
+    colorlinks=true,           				% false: boxed links; true: colored links
+    linkcolor=black,           				% color of internal links
+    citecolor=black,           				% color of links to bibliography
+    filecolor=black,           				% color of file links
+    urlcolor=black            					% color of external links
+}
+
+
+ % Setting up listings
+\lstset{
+	basicstyle=\scriptsize\ttfamily, % print whole listing small
+	keywordstyle=\color{black}\bfseries\underbar, % underlined bold black keywords
+	identifierstyle=, 					% nothing happens
+	commentstyle=\color{white}, % white comments
+	stringstyle=\scriptsize\sffamily, 			% typewriter type for strings
+	showstringspaces=false,     % no special string spaces
+	aboveskip=3pt,
+	belowskip=3pt,
+	columns=fixed,
+	backgroundcolor=\color{lightgray},
+}
+\def\lstlistingname{lista}
+
+
+ % Setting up captions
+\captionsetup[figure]{
+    %labelsep=none,
+    %font={footnotesize,it},
+    %justification=justified,
+    width=.75\textwidth,
+    aboveskip=10pt}
+
+
+\renewcommand{\captionlabelfont}{\small\bf}
+\renewcommand{\captionfont}{\footnotesize\it}
+
+
+ % The following commands format the chapter headings
+\titleformat{\chapter}[display]
+{\normalfont\fontsize{20pt}{20pt}\bfseries\raggedright}{\chaptertitlename\ \thechapter} % The numbers define the font-size of the text used to display the "Chater #"
+{25pt}{\Huge} % This line maipulates how much space is put between teh "Chapter #" text and the Title of the chapter
+\titlespacing*{\chapter}{0pt}{50pt}{15pt} % Sets the space before and after teh title declaration
+%\titleformat*{\section}{\centering\Large\bfseries}
+%\titleformat*{\subsection}{\centering\large\bfseries}
+
+
+ % The next three lines remove pagebreaks between chapters
+%\makeatletter
+%\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\par}{}{}
+%\makeatother
+
+
+ % The next few lines add page numbering and additional information to the footer
+\renewcommand{\headrulewidth}{0pt}\fancyhead{}
+\fancypagestyle{plain}{%
+	\fancyhf{} % clear all header and footer fields
+	\fancyfoot[C]{\thepage} % except the center
+	%\fancyfoot[R]{Text to the right} % except the center
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}}
+%\fancyfoot[R]{alma}
+%\rfoot{Page \thepage\}
+
+
+
+%-----------------------------------------------------------------------
+% Front Page Setup
+%-----------------------------------------------------------------------
+
+\title{\documentTitle}
+\author{\authorOne \and \authorTwo}
+\date{\today}
+
+
+
+%-----------------------------------------------------------------------
+% Document Body
+%-----------------------------------------------------------------------
+
+\begin{document}
+    \singlespacing
+    \pagenumbering{gobble}
+
+    \include{frontpage}
+    \input{ch/abstract/abstract}
+
+    \pagenumbering{arabic}
+    \setcounter{secnumdepth}{2}
+    %\newpage
+    %\setcounter{page}{1}
+
+    \tableofcontents\thispagestyle{empty}\vfill
+
+    \onehalfspacing
+
+    \input{ch/introduction/introduction}
+    \input{ch/project_management/project_management}
+    \input{ch/mes_server/mes_server}
+    \input{ch/mobile_robot/mobile_robot}
+    \input{ch/robot_cell/robot_cell}
+    \input{ch/financial_aspects/financial_aspects}
+    \input{ch/conclusion/conclusion}
+
+    \titlespacing*{\chapter}{0pt}{6pt}{5pt} % Sets the space before and after the title declaration
+    % references section
+    \bibliographystyle{sty/IEEEtranBST/IEEEtran}
+    \bibliography{bib/IEEEabrv,bib/references,bib/platforms}\thispagestyle{empty}
+
+    \input{apx/appendices}
+
+    %\clearpage
+    %\listoftodos
+
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% ispell-local-dictionary: "en_US"
+%%% End:

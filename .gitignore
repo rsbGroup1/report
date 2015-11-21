@@ -124,3 +124,9 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+
+# Sublime
+*.sublime*
+
+# Main document pdf
+main.pdf

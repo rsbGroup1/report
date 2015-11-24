@@ -12,3 +12,11 @@ How the mobile robot navigates in general (system overview), and the discussion 
     \item QR-code reading
     \item HMI
 \end{itemize}
+\subsection{In-box Navigation} \label{sec:in_box_navigation}
+As per project description, the navigation inside the box is to be done based on SLAM. Due to complexity of the entire project and potential diversity of SLAM implementations, an open-source implementation of SLAM was chosen. More specifically the gmapping-package (http://wiki.ros.org/gmapping) which has a livid community of supporters and builds a ROS wrapper for “OpenSlam's Gmapping”(https://www.openslam.org/gmapping.html). TF-Frames of Lidar, IMU and the robot base were set up, this allows for easy transformation between Lidar and odometry data, inside the package. Using these, the SLAM-Implementation uses a particle filter to sequentially build up a map of the area. By manually driving through the entire workspace, a map was created. 
+TODO: INCLUDE MAP
+Using the map-server package from the ROS 2D-Navigation Stack(http://wiki.ros.org/navigation) the generated map was stored and is then broadcasted as a static map for localization. The AMCL (Adaptive Monte-Carlo Localization) package (which is also included in the navigation stack) then uses the static map, the lidar as well as odometry data to localize the robot while in free navigation. After tuning the parameters, AMCL worked fairly reliably for navigation both inside and outside the box.\\
+TODO: Describe move{\_}base\\
+Due to the box being fairly monotone in respect to the Lidar readings (clean, walls, no landmarks), precise navigation inside the box was sometimes not perfect. Also with multiple robots present in the box, issues, especially when trying to charge occurred. To ensure reliability of charging, a backup behaviour was added, when the charging failed using move{\_}base. For this a line was added, using the already implemented Line Following behaviour. The move{\_}base is used to navigate the robot to the start of the charging line. Then the robot follows the line until a pre-specified distance from the wall using Lidar. Having a main and a backup behaviour proved to be sufficient for reliable charging\\
+TODO: IS THAT REALLY SO?
+TODO: move links to bibliography

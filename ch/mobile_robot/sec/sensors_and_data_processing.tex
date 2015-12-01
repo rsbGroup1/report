@@ -1,10 +1,32 @@
-%!TEX root = ../../main.tex
+%!TEX root = ../../../main.tex
 \section{Sensors and data processing} % (fold)
 \label{sec:mr_sensors_and_data_processing}
 
 	\subsection{Camera processing} % (fold)
 	\label{sub:mr_camera_processing}
 	
+
+	\begin{figure}
+        \centering
+        \begin{subfigure}[ht!]{0.296\textwidth}
+            \includegraphics[width=\textwidth]{figs/mr_camera_processing_1}
+            \caption{Clear detection of the line}
+            \label{fig:mr_camera_processing_1}
+        \end{subfigure}
+        \hspace{40pt}
+        \begin{subfigure}[ht!]{0.296\textwidth}
+            \includegraphics[width=\textwidth]{figs/mr_camera_processing_2}
+            \caption{Detection when noise in the image}
+            \label{fig:mr_camera_processing_2}
+    	\end{subfigure}
+    	\begin{subfigure}[ht!]{0.296\textwidth}
+            \includegraphics[width=\textwidth]{figs/mr_camera_processing_3}
+            \caption{Detection when crossing line}
+            \label{fig:mr_camera_processing_3}
+    	\end{subfigure}
+    \caption{Representation of possible cases when detecting the line}
+    \end{figure}
+
 	% subsection camera_processing (end)
 
 	\subsection{Lidar processing} % (fold)

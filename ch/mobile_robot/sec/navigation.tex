@@ -1,14 +1,19 @@
 %!TEX root = ../../../main.tex
 \section{Navigation} % (fold)
 \label{sec:mr_navigation}
-In this section the different kinds of navigations that let the robot move are explained.
-These are the actions of the robot that let the robot change its position and they are used as means by the navigation controller \ref{sec:mr_navigation_controller} to move around the workplace.
+In this section the different types of navigation that let the robot move are explained.
+These are the actions of the robot that let the robot change its position and they are used as means by the navigation controller (\ref{sec:mr_navigation_controller}) to move around the workplace.
+As will be explained in the section \ref{sec:mr_safety_system}, this states are the only ones that activate the deadman signal that let the robot move.
+This states are intrinsically exclusive, meaning that, for example, line navigation and free navigation can't be done at the same time.
 
     \subsection{Relative navigation} % (fold)
     \label{sub:mr_relative_navigation}
     Making use of the combined odometry from the wheels and the IMU, the relative navigation has been implemented.
-    This 
-    In the figure 
+    Two different of movements can be carried out: angular and linear.
+    While angular can rotate the robot over the rotation axis given by the position of the wheels (clockwise or anticlockwise), the linear can shift the robot in a straight line of its position (forward or backward).
+    This two movements are represented in the figures \ref{fig:mr_relative_linear} and \ref{fig:mr_relative_angular} respectively.
+
+    The relative movement is based on a P controller that tries to minimize the error between the current position and the desired position, which is calculated from the current position and the required movement.
 
    \begin{figure}
         \centering
@@ -22,9 +27,8 @@ These are the actions of the robot that let the robot change its position and th
             \includegraphics[width=\textwidth]{figs/mr_relative_angular}
             \caption{Angular movement representation}
             \label{fig:mr_relative_angular}
-    \end{subfigure}s
-
-    \caption{Pictures of animals}\label{fig:animals}
+    \end{subfigure}
+    \caption{Representation of the relative movements}
     \end{figure}
     % subsection relative_navigation (end)
 
@@ -32,7 +36,9 @@ These are the actions of the robot that let the robot change its position and th
 
     \subsection{Line navigation} % (fold)
     \label{sub:mr_line_navigation}
-    
+    Taking the information from the camera processing a PID is used to track the line.
+    This PID tries to minimize the distance between the point that represents the center of the line and a desired point.
+    The desired point is the center of the image due to the camera was physically positioned in the perpendicular to the rotation axis of the robot.
     % subsection line_navigation (end)
 
 

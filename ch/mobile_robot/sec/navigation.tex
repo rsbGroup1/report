@@ -9,7 +9,7 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
     \subsection{Relative navigation} % (fold)
     \label{sub:mr_relative_navigation}
     Making use of the combined odometry from the wheels and the IMU, the relative navigation has been implemented.
-    Two different of movements can be carried out: angular and linear.
+    Two different movements can be carried out: angular and linear.
     While angular can rotate the robot over the rotation axis given by the position of the wheels (clockwise or anticlockwise), the linear can shift the robot in a straight line of its position (forward or backward).
     This two movements are represented in the figures \ref{fig:mr_relative_linear} and \ref{fig:mr_relative_angular} respectively.
 
@@ -45,11 +45,13 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
 
     \subsection{Free navigation} % (fold)
     \label{sub:mr_free_navigation}
+
+    \textbf{Dominik + Martin}
     
     As per project description, the navigation inside the box is to be done based on SLAM. 
     Due to complexity of the entire project and potential diversity of SLAM implementations, an open-source implementation of SLAM was chosen. 
     More specifically the gmapping-package \cite{gmapping} which has a livid community of supporters and builds a ROS wrapper for “OpenSlam's Gmapping”\cite{openslam}. 
-    TF-Frames of Lidar, IMU and the robot base were set up, this allows for easy transformation between Lidar and odometry data, inside the package. 
+    TF-Frames of LIDAR, IMU and the robot base were set up, this allows for easy transformation between LIDAR and odometry data, inside the package. 
     Using these, the SLAM-Implementation uses a particle filter to sequentially build up a map of the area. 
     By manually driving through the entire workspace, a map was created. 
     \begin{figure}[H]

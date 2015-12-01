@@ -1,13 +1,17 @@
 %!TEX root = ../../../main.tex
 \section{Frobomind} % (fold)
 \label{sec:mr_frobomind}
+
+\textbf{Someone}
+
 A shord tesciptiotion of FroboMind, what it is, the benefit of using it in comparison to a purely ROS based system, and how we use it now...
 
 	\subsection{Frobomind interface} % (fold)
 	\label{sub:mr_frobomind_interface}
-	Talk about the frobit interface that we have modified to pusblish the batery state
-	
+	The frobomind interface is in charge of transform the hardware sensors values into ROS messages that can be used by the user.
+	This is implemented as a ROS package given inside of the frobomind framework.
+	A small modification in this package has been made so the status of the battery can be read.
+	This allows the robot to create subrutines of charging when needed and continuing with the previous task when charged.
 	% subsection frobomind_interface (end)
-
 % section frobomind (end)
 

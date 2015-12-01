@@ -1,11 +1,31 @@
 %!TEX root = ../../../main.tex
 \section{Navigation} % (fold)
 \label{sec:mr_navigation}
-
+In this section the different kinds of navigations that let the robot move are explained.
+These are the actions of the robot that let the robot change its position and they are used as means by the navigation controller \ref{sec:mr_navigation_controller} to move around the workplace.
 
     \subsection{Relative navigation} % (fold)
     \label{sub:mr_relative_navigation}
-    Making use of the combined odometry from the wheels and the IMU, the relative navigation has been implemented
+    Making use of the combined odometry from the wheels and the IMU, the relative navigation has been implemented.
+    This 
+    In the figure 
+
+   \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.25\textwidth}
+            \includegraphics[width=\textwidth]{figs/mr_relative_linear}
+            \caption{Linear movement representation}
+            \label{fig:mr_relative_linear}
+        \end{subfigure}
+        \hspace{40pt}
+        \begin{subfigure}[b]{0.296\textwidth}
+            \includegraphics[width=\textwidth]{figs/mr_relative_angular}
+            \caption{Angular movement representation}
+            \label{fig:mr_relative_angular}
+    \end{subfigure}s
+
+    \caption{Pictures of animals}\label{fig:animals}
+    \end{figure}
     % subsection relative_navigation (end)
 
 

@@ -4,7 +4,7 @@
 In this section the different types of navigation that let the robot move are explained.
 These are the actions of the robot that let the robot change its position and they are used as means by the navigation controller (\ref{sec:mr_navigation_controller}) to move around the workplace.
 As will be explained in the section \ref{sec:mr_safety_system}, this states are the only ones that activate the deadman signal that let the robot move.
-This states are intrinsically exclusive, meaning that, for example, line navigation and free navigation can't be done at the same time.
+This states are intrinsically exclusive, meaning that, for example, line navigation and free navigation can't be used at the same time.
 
     \subsection{Relative navigation} % (fold)
     \label{sub:mr_relative_navigation}
@@ -74,5 +74,20 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
     \textbf{TODO: IS THAT REALLY SO?}
 
     % subsection free_navigation (end)
+
+    \subsection{Manual navigation} % (fold)
+    \label{sub:mr_manual_navigation}
+    The ability to control the robot manually from the HMI is also implemented.
+    This controller (see Figure \ref{fig:mr_manual_navigation}) shown in the \emph{Advanced mode} of the HMI, lets the user to control the linear and angular motions as well as the speed of these.
+    This behavior is only allowed when all the skills and routines of the robot have finished so the manual mode cannot overwrite the automatic plans of the robot.
+
+    \begin{figure}[tb]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figs/manual_navigation}
+        \caption{Manual navigation controller in the HMI.}
+        \label{fig:mr_manual_navigation}
+    \end{figure}
+    
+    % subsection manual_navigation (end)
 
 % section navigation (end)

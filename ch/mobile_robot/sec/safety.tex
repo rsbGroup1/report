@@ -49,4 +49,7 @@ This can be activated or disabled depending on the situation.
 	The thresholds are expressed in the same units as the distance received from the LIDAR being in our project 40 cm for \emph{proximity alert} and 15 cm for \emph{colliding}.
 	When in \emph{proximity alert} the robot will slow down its movement (any) in a factor of 0.5 and when in \emph{colliding} will stop.
 
+	The limitations of this system is that, being the LIDAR in the front, only the obstacles found in the front of the robot can be detected.
+	So no obstacles in the sides and behind are detected and these movements are "blind".
+	The front detection can be adjusted given the angle of detection desired.
 % section safety_system (end)

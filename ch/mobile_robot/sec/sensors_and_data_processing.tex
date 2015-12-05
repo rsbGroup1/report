@@ -84,8 +84,7 @@ In the following subsections the data processing made with each of the sensors i
 
 	\subsection{LIDAR processing} % (fold)
 	\label{sub:mr_lidar_processing}
-	\textbf{Martin + Dominik}
-
+	The provided LIDAR (SICK TiM310) is capable of providing distance in 270 degrees, however due to the setup on the robot only about 200 degrees are used. The SICK TiM Ros Package \cite{sick_tim} allows for direct setup of min and max angles and publishes the measured points as a LaserScan message. This message then is directly used by the various skills.
 	% subsection lidar_processing (end)
 
 	\subsection{Combined frobit odometry} % (fold)

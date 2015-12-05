@@ -48,16 +48,25 @@ To reduce the risk of having communication failures rendering user interaction i
 
 	\subsection{Physical UI} % (fold)
 	\label{sub:mr_physical_devices}
-	
-	Capabilities, implementation, testing and results
-	
-	Talk here about the button too.
-	\textbf{Jorge}
+	The user can control the mode of the robot with two buttons integrated in a buttons board (see section \ref{sub:mr_buttons_board}).
+	This board integrates two buttons: one for change the mode of the robot to \emph{auto} and the other to \emph{idle}. This two modes are explained in the section \ref{sec:mr_flow_control_overview}.
+
+	At the same time, the board integrates an RGB led, that change its color and the blink frequency to express different modes and actions.
+	The different indications of the LED are shown in the appendix \ref{sec:buttons_board_s_led_meaning} and these are:
+	\begin{itemize}
+		\item \textbf{White, no blinking}: the robot is in \emph{idle} mode.
+		\item \textbf{Green, blinking}: the robot is in \emph{auto} mode.
+		\item \textbf{Yellow, blinking}: the robot is in \emph{manual} mode.
+		\item \textbf{Yellow, no blinking}: the robot is in \emph{proximity alert}.
+		\item \textbf{Red, no blinking}: the robot is in \emph{collision}.
+	\end{itemize}
 	% subsection physical_devices (end)
 
 	\subsection{ROS Services} % (fold)
 	\label{sub:mr_ros_services}
-	\textbf{Jorge}
+	Furthermore, the possibility of control the robot and know its state with ROS services is given.
+	Due to the implementation of the code the project uses services intensively.
+	This allows also to control the robot from the terminal and check the status \emph{echoing} the publishers.
 	% subsection ros_services (end)
 
 % section human_machine_interface (end)

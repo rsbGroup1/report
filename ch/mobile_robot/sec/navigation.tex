@@ -47,7 +47,8 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
     \label{sub:mr_free_navigation}
 
     \textbf{Dominik + Martin}\\
-    \textbf{Why don't we use MarkerLocator? WRITE THE ANSWER}
+    \textbf{Why don't we use MarkerLocator? WRITE THE ANSWER}\\
+    When the robot reaches the end of the line it needs to navigate  to and in the box containing the charging station and brick dispenser. For localisation in this area the LIDAR, odometry and a camera localization system. The camera system is used to initialize the particle filter used for navigation. The system requires a marker placed on the robot visible from the roof mounted  camera. This systems is currently not used on the robot. The system was discarded due to the performance of the LIDAR localisation in the area the camera system covers. The removal of the marker from the top of the mobile platform increased the area for catching dispensed bricks thus reducing the required precision for navigating to the brick dispenser. For these reasons the camera system is disabled. 
     
     As per project description, the navigation inside the box is to be done based on SLAM. 
     Due to complexity of the entire project and potential diversity of SLAM implementations, an open-source implementation of SLAM was chosen. 

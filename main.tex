@@ -85,7 +85,24 @@ Packing LEGO Bricks}
 \definecolor{ColorH234}{rgb}{0.310,0.506,0.741}
 \definecolor{ColorOthers}{rgb}{0.141,0.247,0.376}
 
+%---Colors---%
+\definecolor{chapterColor}{HTML}{004685}
+\definecolor{sectionColor}{HTML}{087D9C}
+\definecolor{subSectionColor}{HTML}{07928A}
+\definecolor{defaultColor}{HTML}{222222}
 
+\chapterfont{\color{chapterColor}}
+\sectionfont{\color{sectionColor}}
+\subsectionfont{\color{subSectionColor}}
+\color{defaultColor}
+
+%---Fonts---%
+\usepackage[default]{raleway}
+\usepackage[T1]{fontenc}
+\renewcommand\textbullet{\ensuremath{\bullet}}
+
+
+%---Fonts---%
 \let\myBib\thebibliography
 \let\endmyBib\endthebibliography
 
@@ -99,7 +116,7 @@ Packing LEGO Bricks}
 \pagestyle{plain}
 \setlength{\parindent}{0pt} % Makes the text perspicuous, common formatting in documents written in English. ( Alteres the size of subsequent paragraph indents  )
 \setlength{\parskip}{8pt plus 3pt minus 3pt} % Makes the text perspicuous, common formatting in documents written in English ( Alteres the extra vertical space inserted before a paragraph, which can have a default dimension, plus an amount of expansion and minus an amount of contraction. These are the parameters. )
-\marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
+\marginsize{25mm}{25mm}{15mm}{15mm} % anysize package
 \setcounter{secnumdepth}{0}
 \sectionfont{\large\upshape\bfseries}
 \setcounter{secnumdepth}{2}

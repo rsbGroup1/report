@@ -1,6 +1,18 @@
 %!TEX root = ../../../main.tex
 \section{Sensors and data processing} % (fold)
 \label{sec:mr_sensors_and_data_processing}
+In the section \ref{sec:mr_hardware} the different sensors of the robot were explained.
+In this section, the information gathered by this sensors and its processing is explained.
+Six different kind of sensors have been used in order to fulfill the requirements of the project.
+These are:
+\begin{enumerate}
+	\item The camera, explained in \emph{camera processing} (\ref{sub:mr_camera_processing}) to follow the line and detect QR codes.
+	\item LIDAR (\ref{sub:mr_lidar_processing}) used to map the area, to localize the robot when in free navigation (see section \ref{sub:mr_free_navigation}), to detect obstacles in front of the robot and as a skill (see section \ref{sub:skills}) to approximate the robot to an static object.
+	\item Encoders in the motors, used for the combined odometry implemented in frobomind.
+	\item IMU, used in combination with the wheels odometry to know the position of the robot.
+	\item Board of buttons, that equipped with two buttons and one RDG led, allows the user the start or stops the robot at the same time that indicates what is is doing with the led.
+\end{enumerate}
+In the following subsections the data processing made with each of the sensors is explained.
 
 	\subsection{Camera processing} % (fold)
 	\label{sub:mr_camera_processing}
@@ -72,15 +84,18 @@
 
 	\subsection{LIDAR processing} % (fold)
 	\label{sub:mr_lidar_processing}
-	\textbf{Martin + Dominik}
-
+	The provided LIDAR (SICK TiM310) is capable of measuring the distance in 270 degrees, however due to the setup on the robot only about 200 degrees are used. The SICK TiM Ros Package \cite{sick_tim} allows for direct setup of minimum and maximum angles and publishes the measured points as a LaserScan message. This message then is directly used by the various skills.
 	% subsection lidar_processing (end)
 
 	\subsection{Combined frobit odometry} % (fold)
 	\label{sub:mr_combined_frobit_odometry}
-	\textbf{Jorge}
-	Wheels + IMU
+	The Frobit odometry module publishes the odometry status of the robot based on inputs from the wheel encoders and the on-board IMU. Sensor fusion is used to get the orientation of the robot using the IMU and this data is compared to the encoder feedback from the wheels resulting in robust odometry data.
 	
 	% subsection combined_frobit_odometry (end)
+
+	\subsection{Button-board} % (fold)
+	\label{sub:mr_buttons_board}
+	A Tiva TM4C123 Microcontroller board is used for direct hardware control and feedback. Two buttons and a RGB led provides the hardware interface. A serial UART line connects the board to the PC.
+	% subsection botton_board (end)
 
 % section sensors_and_data_processing (end)

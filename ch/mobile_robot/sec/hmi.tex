@@ -2,14 +2,14 @@
 \section{Human Machine Interface} % (fold)
 \label{sec:mr_human_machine_interface}
 
-A Human Machine Interface - HMI - is an indispensable part of all complex robotic and automation systems. It not only makes it possible for the operators to gain manual control over specific subsystems or the whole system, but can provide feedback on its state and performance, and serve as a mean of intervention in emergency situations.
+A Human Machine Interface (HMI) is an indispensable part of all complex robotic and automation systems. It not only makes it possible for the operators to gain manual control over specific subsystems or the whole system, but can provide feedback on its state and performance, and serve as a mean of intervention in emergency situations.
 
-To reduce the risk of having communication failures rendering user interaction impossible, we have opted to pursue a redundant HMI solution, consisting of both a virtual and a physical User Interface - UI - introduced in the following sections.
+To reduce the risk of having communication failures rendering user interaction impossible, we have opted to pursue a redundant HMI solution, consisting of both a virtual and a physical User Interface introduced in the following sections.
 
 	\subsection{Virtual UI} % (fold)
 	\label{sub:mr_web}
 	
-	The virtual system is implemented following the Model-View-Controller - MVC - architecture, where clients are connected to a central server unit. 
+	The virtual system is implemented following the Model-View-Controller architecture, where clients are connected to a central server unit. 
 	
 	\begin{figure}[H]
 		\centering
@@ -34,39 +34,31 @@ To reduce the risk of having communication failures rendering user interaction i
 	The virtual system has the following capabilities:
 	
 	\begin{itemize}
-		\item displaying of messages broadcasted by various  subsystems, with different views for the separate message types, namely: Errors, Warnings and All,
-		\item possibility to change the operation mode of the mobile platform through user interaction,
-		\item broadcast of an emergency signal,
-		\item robot location and activity information display,
-		\item provision of manual control of robot movement - with speed adjustment - and tipper states,
-		\item provision of textual command interfaces,
-		\item separation of normal and advanced features,
-		\item automatic error handling in relation to connection malfunctioning 
+		\item Displaying of messages broadcast by various subsystems, with different views for the separate message types, namely: Errors, Warnings and all
+		\item Possibility to change the operation mode of the mobile platform through user interaction
+		\item Broadcast of an emergency signal
+		\item Robot location and activity information display
+		\item Provision of manual control of robot movement - with speed adjustment - and tipper states
+		\item Provision of textual command interfaces
+		\item Separation of normal and advanced features
+		\item Automatic error handling in relation to connection malfunctioning 
 	\end{itemize}
 
 	% subsection web (end)
 
 	\subsection{Physical UI} % (fold)
 	\label{sub:mr_physical_devices}
-	The user can control the mode of the robot with two buttons integrated in a buttons board (see section \ref{sub:mr_buttons_board}).
-	This board integrates two buttons: one for change the mode of the robot to \emph{auto} and the other to \emph{idle}. This two modes are explained in the section \ref{sec:mr_flow_control_overview}.
+	The user can control the mode of the robot with two buttons integrated in a button-board (see section \ref{sub:mr_buttons_board}).
+	This board integrates two buttons: One for changing the mode of the robot to \emph{auto} and the other to \emph{idle}. These two modes are explained in section \ref{sec:mr_flow_control_overview}.
 
-	At the same time, the board integrates an RGB led, that change its color and the blink frequency to express different modes and actions.
-	The different indications of the LED are shown in the appendix \ref{sec:buttons_board_s_led_meaning} and these are:
-	\begin{itemize}
-		\item \textbf{White, no blinking}: the robot is in \emph{idle} mode.
-		\item \textbf{Green, blinking}: the robot is in \emph{auto} mode.
-		\item \textbf{Yellow, blinking}: the robot is in \emph{manual} mode.
-		\item \textbf{Yellow, no blinking}: the robot is in \emph{proximity alert}.
-		\item \textbf{Red, no blinking}: the robot is in \emph{collision}.
-	\end{itemize}
-	% subsection physical_devices (end)
+	At the same time, the board integrates a RGB led that change its color and the blink frequency to express different modes and actions.
+	The different indications of the LED are shown in the appendix \ref{sec:buttons_board_s_led_meaning}.
 
 	\subsection{ROS Services} % (fold)
 	\label{sub:mr_ros_services}
-	Furthermore, the possibility of control the robot and know its state with ROS services is given.
+	Furthermore, the possibility of controlling the robot and knowing its states using ROS services, is given.
 	Due to the implementation of the code the project uses services intensively.
-	This allows also to control the robot from the terminal and check the status \emph{echoing} the publishers.
+	This allows to control the robot from the terminal and check the status by \emph{echoing} the publishers.
 	% subsection ros_services (end)
 
 % section human_machine_interface (end)

@@ -89,14 +89,13 @@ In the following subsections the data processing made with each of the sensors i
 
 	\subsection{Combined frobit odometry} % (fold)
 	\label{sub:mr_combined_frobit_odometry}
-	\textbf{Someone}
-	Wheels + IMU
+	The Frobit odometry module publishes the odometry status of the robot based on inputs from the wheel encoders and the on-board IMU. Sensor fusion is used to get the orientation of the robot using the IMU and this data is compared to the encoder feedback from the wheels resulting in robust odometry data.
 	
 	% subsection combined_frobit_odometry (end)
 
-	\subsection{Buttons board} % (fold)
+	\subsection{Button-board} % (fold)
 	\label{sub:mr_buttons_board}
-	\textbf{Yonas}
+	A Tiva TM4C123 Microcontroller board is used for direct hardware control and feedback. Two buttons and a RGB led provides the hardware interface. A serial UART line connects the board to the PC.
 	% subsection botton_board (end)
 
 % section sensors_and_data_processing (end)

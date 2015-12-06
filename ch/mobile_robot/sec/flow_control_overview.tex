@@ -44,8 +44,8 @@ The connections are bidirectional and their functions are:
 \begin{enumerate}
 	\item \textbf{Safety}: Reads the state of the different sensors in the robot that measure the possibility of harm the robot and, if in danger, sends a signal to stops all the actuators.  
 	\item \textbf{HMI}: This can change the state of the robot to \emph{auto} to start/continue an order, to \emph{idle} to pause the current order or to \emph{manual} if the user wants to control the robot manually. On the other hand, the main node can tell the HMI (1) its position and (2) the actions being carried out in that moment. This is that in the HMI is shown if the robot is, for example, inside the box and following the line or doing a relative movement.
-	\item \textbf{MES server}: the main node reads the order sent and starts the new hierarchy of actions. Also the main node can send messages to the MES in order to activate other agents controlled by this.
-	\item \textbf{Navigation controller}: as will be explained in the sections \ref{sec:mr_navigation_controller}, it is responsible of, knowing the current position of the robot, calculate a path to the desired position and perform it. The main node can receive from it when the robot has reached the desired position.
+	\item \textbf{MES server}: The main node reads the order sent and starts the new hierarchy of actions. Also the main node can send messages to the MES in order to activate other agents controlled by this.
+	\item \textbf{Navigation controller}: As will be explained in the sections \ref{sec:mr_navigation_controller}, it is responsible of, knowing the current position of the robot, calculate a path to the desired position and perform it. The main node can receive from it when the robot has reached the desired position.
 	\item \textbf{Tipper controller}: Handles the position of the tipper assembled in the robot. The controller can talk to the main node to tell when has finished the desired movement.
 \end{enumerate}
 

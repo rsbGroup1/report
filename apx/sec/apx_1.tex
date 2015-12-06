@@ -6,44 +6,46 @@
 
 	\subsection{Protocol Codes}
 
-	First digit:
-	0 = null
-	1 = info
-	2 = warning
+	First digit: (Log)
+	0 = null,
+	1 = info,
+	2 = warning,
 	3 = error
 
-	Second digit:
-	0 = null
-	1 = box
-	2 = camera 
-	3 = track zone 2
-	4 = track zone 1
-	5 = RC 1
-	6 = RC 2
+	Second digit: (Location)
+	0 = null,
+	1 = box,
+	2 = camera,
+	3 = track zone 2,
+	4 = track zone 1,
+	5 = RC 1,
+	6 = RC 2,
 	7 = RC 3
 
-	Third digit:
-	0 = null
-	1 = tipper
-	2 = lineFollowing 
-	3 = GPS 
-	4 = collectingBricks
-	5 = fixedMovement
+	Third digit: (Icons)
+	0 = null,
+	1 = tipper,
+	2 = lineFollowing,
+	3 = GPS,
+	4 = collectingBricks,
+	5 = fixedMovement,
 	6 = charging
 
-	Fourth digit:
-	0 = null
-	1 = safe
-	2 = proximityAlert
+	Fourth digit: (Safety)
+	0 = null,
+	1 = safe,
+	2 = proximityAlert,
 	3 = colliding
 
 	\subsection{Examples}
 
-	e.g.: "1000,Your displayable message here,"  The comma in the end is compulsary!
+	e.g.: "1000,Your displayable message here,"  The comma in the end is compulsory!
 
-	e.g.: "2000,Your displayable warning here,"  The comma in the end is compulsary!
+	e.g.: "2000,Your displayable warning here," 
 
-	e.g.: "0100,,"  The commas in the end are compulsary!
+	e.g.: "0100,," Robot is in box!
+	
+	e.g.: "0003,," Robot is in collision!
 
 
 
@@ -51,11 +53,11 @@
 \label{sec:buttons_board_s_led_meaning}
 
 \begin{itemize}
-	\item \textbf{White, no blinking}: the robot is in \emph{idle} mode.
-	\item \textbf{Green, blinking}: the robot is in \emph{auto} mode.
-	\item \textbf{Yellow, blinking}: the robot is in \emph{manual} mode.
-	\item \textbf{Yellow, no blinking}: the robot is in \emph{proximity alert}.
-	\item \textbf{Red, no blinking}: the robot is in \emph{collision}.
+	\item \textbf{White, not blinking}: The robot is in \emph{idle} mode.
+	\item \textbf{Green, blinking}: The robot is in \emph{auto} mode.
+	\item \textbf{Purple, blinking}: The robot is in \emph{manual} mode.
+	\item \textbf{Yellow}: The robot is in \emph{proximity alert}.
+	\item \textbf{Red}: The robot is in \emph{collision}.
 \end{itemize}
 
 % section buttons_board_s_led_meaning (end)

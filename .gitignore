@@ -127,6 +127,7 @@ sympy-plots-for-*.tex/
 
 # Sublime
 *.sublime*
+*.fuse_*
 
 # Main document pdf
 main.pdf

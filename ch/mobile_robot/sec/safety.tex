@@ -1,25 +1,56 @@
 %!TEX root = ../../../main.tex
 \section{Safety system} % (fold)
 \label{sec:mr_safety_system}
-
+\textbf{Why are we NOT using Safety Eye? (Answer: It sucks.) But write about why.}
+The safety in the mobile robot is intrinsic in all the nodes that allow its movement.
+There are clearly two aspects to talk about: (1) the \textbf{incident handler} is based on the frobomind given, and it receives some signal input and when they are correct outputs an \emph{activation} signal giving way the robot to move.
+(2) On the other hand, the \textbf{obstacle detector} is used to feed another skill (see section \ref{sub:skills}) that changes the speed, or even stops, the robot depending on the distance of the obstacle detected by the LIDAR.
+This can be activated or disabled depending on the situation.
 	\subsection{Incident handler} % (fold)
 	\label{sub:mr_incident_handler}
-	
+	The incident handler is based in the \emph{simple incident handler} given inside of the frobomind framework.
+	This system receives two signals: (1) the \emph{deadman} and (2) the \emph{critical fault}.
+	When both signals are received correctly, the incident handler outputs another signal that \emph{enables the actuation}.
+	This signal is directly received from the system that actually performs the actions that move the motors in the robot.
+	Both signals are booleans with a time stamp and need two conditions to be approved:
+	\begin{enumerate}
+		\item As booleans, need to be true.
+		\item As stamped, need to be received in an interval smaller than a threshold. In our system the signal need to be received in intervals inferior to 50 milliseconds.
+	\end{enumerate}
+	If both, \emph{deadman} and \emph{critical fault}, are received by the incident handler satisfying those conditions, the output signal \emph{actuation enable} will be publish and the robot will move.
 		\subsubsection{Deadman} % (fold)
 		\label{ssub:mr_deadman}
-		
+		The deadman signal is used by the navigators to actually perform a movement.
+		As stated previously, the signal needs to be sent in intervals lower to 50 milliseconds and be true.
+		The deadman signal received in the incident handler doesn't contain information about who is the sender, but is not a problem due to the navigators are made so they are exclusive.
+		This means, that only one deadman signal is received from one navigator.
 		% subsubsection deadman (end)
 
 		\subsubsection{Critical fault} % (fold)
 		\label{ssub:mr_critical_fault}
-		
+		The critical fault signal is controlled by the main controller of the robot.
+		This node, as explained in the section \ref{sec:mr_flow_control_overview}, controls among others the mode of the robot.
+		Only in the modes \emph{manual} and \emph{auto} this signal is activated meaning that if the robot is in \emph{idle}, either because there was a critical fault in the robot or because manually was stopped, the robot cannot move.
+		As stated previously, the signal needs to be sent in intervals lower to 50 milliseconds and be true.
 		% subsubsection critical_fault (end)
-
 	% subsection incident_handler (end)
 
 	\subsection{Obstacle detector} % (fold)
 	\label{sub:mr_obstacle_detector}
-	
+	Its function consist of read all the distances information from the LIDAR and, given a detection angle and two thresholds (\emph{proximity alert} and \emph{colliding}), output a signal which will slow down or stop the robot.
+	The obstacle detector is used inside of an skill (see section \ref{sub:skills}) so it can be activated or disabled when necessary.
+
+	In practice the obstacle detector is only used in places where (1) there is a risk to crash and (2) its behavior doesn't affect to the main one.
+	This means that, for example, inside of the robotic arm workcell it keeps disabled due to (1) the robot cannot crash with any moving agent and (2) due to the proximity to other static parts inside the workcell, it will be in the \emph{proximity alert} mode all the time. 
+	To avoid this, the obstacle detector can be disabled or enabled as a skill.
 	% subsection obstacle_detector (end)
 
+	The output of the obstacle detector can be three different exclusive states: (1) \emph{safe}, (2) \emph{proximity alert} and (3) \emph{colliding}. 
+	The default mode is \emph{safe}, while the other two modes are enabled based on two thresholds.
+	The thresholds are expressed in the same units as the distance received from the LIDAR being in our project 40 cm for \emph{proximity alert} and 15 cm for \emph{colliding}.
+	When in \emph{proximity alert} the robot will slow down its movement (any) in a factor of 0.5 and when in \emph{colliding} will stop.
+
+	The limitations of this system is that, being the LIDAR in the front, only the obstacles found in the front of the robot can be detected.
+	So no obstacles in the sides and behind are detected and these movements are "blind".
+	The front detection can be adjusted given the angle of detection desired.
 % section safety_system (end)

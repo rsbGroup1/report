@@ -1,6 +1,7 @@
 %!TEX root = ../../../main.tex
 \section{Flow control overview} % (fold)
 \label{sec:mr_flow_control_overview}
+
 As explained in the chapter \ref{chap:mes_server_chapter}, the MES server sends an order and the clients have to read it and act consequently.
 In the case of the mobile robot, there is a node in charge of do all the necessary steps in order to complete the order.
 
@@ -48,6 +49,14 @@ The connections are bidirectional and their functions are:
 	\item \textbf{Navigation controller}: As will be explained in the sections \ref{sec:mr_navigation_controller}, it is responsible of, knowing the current position of the robot, calculate a path to the desired position and perform it. The main node can receive from it when the robot has reached the desired position.
 	\item \textbf{Tipper controller}: Handles the position of the tipper assembled in the robot. The controller can talk to the main node to tell when has finished the desired movement.
 \end{enumerate}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.75\textwidth]{mr_nodes}
+	\caption{ROS Node Structure}
+	\label{fig:mr_ros_nodes}
+\end{figure}
+A abbreviated ROS Node structure can be seen in figure \ref{fig:mr_ros_nodes}. This is just a brief global view of the detailed nodes that are described in the following sub chapters to give the reader an overview.
 
 % section flow_control_overview (end)
 

@@ -3,5 +3,10 @@
 \section{Camera mounting and calibration}
 \label{sec:rc_camera}
 %%---------------------------------------------------------------------------
-Robot vs fixed mounting\\
-Calibration with checkerboard\\
+The provided camera is a \textit{Logitech webcam C930e}. The camera was mounted on the robot end effector. This was done from the hypothesis that a eye-in-hand camera/robot relationship was easier to calibrate compared to a hand to eye system and since there is no concerns with colliding wit the camera the camera view can be closer to the grasping area.
+
+Camera parameters was controlled using the video4Linux api and driver. A resolution of 1280x720 with a 10 FPS was chosen. The resolution was kept high in order to have a rich details in the image and therefore making detecting bricks more stable with a cost of increased computation time due to large image sizes. The FPS was kept at 10. This made it possible to still give a rough detection of bricks while the conveyor is moving and a higher FPS would just increase the amount of data needed to be processed without adding any new information.
+The auto focus of the camera was disabled and the focus was tuned manually since the camera will be fixed in place relative to the bricks.
+Brightness, contrast and exposure was also manually tuned in order to capture images with minimum variance. This makes it easier to apply vision algorithms.
+
+Camera calibration was done using the camera\_calibration ROS package. Using this tool the intrinsic parameters of the camera was calculated from images of a 9x7 chequerboard held in front of the camera in 73 different positions. Rectification of the image was then done by using the image\_proc ROS package.

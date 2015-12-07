@@ -47,13 +47,18 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
     \label{sub:mr_free_navigation}
 
     \textbf{Dominik + Martin}\\
-    \textbf{Why don't we use MarkerLocator? WRITE THE ANSWER}\\
     When the robot reaches the end of the line it needs to navigate  to and in the box containing the charging station and brick dispenser. For localisation in this area the LIDAR, odometry and a camera localization system. The camera system is used to initialize the particle filter used for navigation. The system requires a marker placed on the robot visible from the roof mounted  camera. This systems is currently not used on the robot. The system was discarded due to the performance of the LIDAR localisation in the area the camera system covers. The removal of the marker from the top of the mobile platform increased the area for catching dispensed bricks thus reducing the required precision for navigating to the brick dispenser. For these reasons the camera system is disabled. 
     
     As per project description, the navigation inside the box is to be done based on SLAM. 
     Due to complexity of the entire project and potential diversity of SLAM implementations, an open-source implementation of SLAM was chosen. 
     More specifically the gmapping-package \cite{gmapping} which has a livid community of supporters and builds a ROS wrapper for “OpenSlam's Gmapping”\cite{openslam}. 
-    TF-Frames of LIDAR, IMU and the robot base were set up, this allows for easy transformation between LIDAR and odometry data, inside the package. 
+	\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{mr_slam_tf}
+        \caption{TF Frames}
+        \label{fig:tf_frames}
+    \end{figure}
+    TF-Frames of LIDAR, IMU and the robot base were set up, see Figure \ref{fig:tf_frames} , this allows for easy transformation between LIDAR and odometry data, inside the package. 
     Using these, the SLAM-Implementation uses a particle filter to sequentially build up a map of the area. 
     By manually driving through the entire workspace, a map was created. 
     \begin{figure}[H]
@@ -62,8 +67,14 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
         \caption{Slam Map}
         \label{fig:slam_map}
     \end{figure}
-    Using the map-server package from the ROS 2D-Navigation Stack \cite{navigation_stack} the generated map was stored and is then broadcasted as a static map for localization. 
-    The AMCL (Adaptive Monte-Carlo Localization) package (which is also included in the navigation stack) then uses the static map, the LIDAR as well as odometry data to localize the robot while in free navigation. 
+    Using the map-server package from the ROS 2D-Navigation Stack \cite{navigation_stack} the generated map was stored, see Figure \ref{fig:slam_map} and is then broadcasted as a static map for localization.
+   \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{mr_amcl}
+        \caption{Particle Cloud}
+        \label{fig:particle_cloud}
+    \end{figure}
+    The AMCL (Adaptive Monte-Carlo Localization) package (which is also included in the navigation stack) then uses the static map, the LIDAR as well as odometry data and a particle cloud (as seen in Figure \ref{fig:particle_cloud} to localize the robot while in free navigation. A particle  
     After tuning the parameters, AMCL worked fairly reliably for navigation both inside and outside the box.\\
     \textbf{TODO: Describe move{\_}base}\\
 	The path planning and execution used for navigating in and outside of the box is done with the ROS package move{\_}base. The package uses two path planners, a global and a local, each of these planners maintains a costmap. The costmap for the global planner contains the map of the area and in this costmap a path from the current pose to the goal pose is calculated. When the global planner succeeds in creating a path the local planner takes over. This planner generates multiple plans with the parameters linear and angular speed. These plans are evaluated based on the reduced distance to the goal, the distance to the path and distance to obstacles. \\
@@ -71,13 +82,10 @@ This states are intrinsically exclusive, meaning that, for example, line navigat
     \\
     Due to the box being fairly monotone in respect to the LIDAR readings (clean, walls, no landmarks), precise navigation inside the box was sometimes not perfect. 
     Also with multiple robots present in the box, issues, especially when trying to charge occurred. 
-    To ensure reliability of charging, a backup behavior was added, when the charging failed using move{\_}base. 
-    For this a line was added, using the already implemented Line Following behavior. 
+    To ensure reliability of charging a line was added, using the already implemented Line Following behaviour. 
     The move{\_}base is used to navigate the robot to the start of the charging line. 
     Then the robot follows the line until a pre-specified distance from the wall using LIDAR. 
-    Having a main and a backup behavior proved to be sufficient for reliable charging\\
-    \textbf{TODO: IS THAT REALLY SO?}
-
+    If the battery level is increasing, the behaviour is successful, otherwise it will try again. This proved to be reliable in successful charging.\\
     % subsection free_navigation (end)
 
     \subsection{Manual navigation} % (fold)

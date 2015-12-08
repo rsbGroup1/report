@@ -17,7 +17,7 @@ This is:
 	\item Go to charge.
 \end{enumerate}
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{flow_control}
 	\caption{Flow control of the main node in the mobile robot}
@@ -28,7 +28,7 @@ This process is handled by the \emph{main node}, and this is the highest abstrac
 It is responsible of coordinate and actuate a second layer of abstraction which, at the same time, will be responsible of directly actuate the hardware.
 The communications between the \emph{main node} an the second layer of abstraction, is shown in the figure \ref{fig:main_connections}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.75\textwidth]{main_connections}
 	\caption{Connections of the main node}
@@ -50,9 +50,9 @@ The connections are bidirectional and their functions are:
 	\item \textbf{Tipper controller}: Handles the position of the tipper assembled in the robot. The controller can talk to the main node to tell when has finished the desired movement.
 \end{enumerate}
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{mr_nodes}
+	\includegraphics[width=1\textwidth]{mr_nodes}
 	\caption{ROS Node Structure}
 	\label{fig:mr_ros_nodes}
 \end{figure}

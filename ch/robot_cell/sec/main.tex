@@ -1,0 +1,10 @@
+%!TEX root = ../../../main.tex
+%%---------------------------------------------------------------------------
+\section{Main Control}
+\label{sec:rc_main}
+%%---------------------------------------------------------------------------
+The main component in the system is the one responsible for running the brick sorting application. The MES order is delivered to the main and it is responsible of performing the corresponding actions and starting the required services.
+
+The brick sorting loop is only running when an order is present, the auto-mode is set, the security is okay and the robot is at the idle position. If that is the case the conveyor belt is started and the vision rough brick detector activated. When a brick is detected, the full algorithm is performed in order to match a brick with one requested in the order. The conveyor belt is only stopped if this is the case. This makes the brick sorting quite fast since a stop in the flow only occurs when a brick is to be picked. 
+
+A security stop will at any time result in a change to idle mode and a stop of all actions. 

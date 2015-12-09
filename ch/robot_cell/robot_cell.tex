@@ -2,9 +2,7 @@
 %----------------------------------------------------------------------------
 \chapter{Robot Cell Design}\label{chap:robot_cell_chapter}
 %----------------------------------------------------------------------------
-
-Each team was provided with one robot cell, equipped with a Kuka KR 6 manipulator and a conveyor belt. After the mobile platform has carried out its delivery order, the LEGO bricks are dumped on the conveyor belt, which moves them in reach of the manipulator, which then attempts to recognize them and select the ones on its order list issued by the MES server. The selected ones are then packed, while the remainder is placed in a box. This is the task each robot cell has to fulfill, and just like in the case of the mobile platform, the process can be subdivided into smaller tasks, which we will introduce in the upcoming sections.
-
+Equipped with a robot manipulator, a gripper and a conveyor belt the task of the robot cell is to sort the Lego bricks delivered by the mobile robot. These are delivered to the conveyor belt which moves them closer to the camera and robot. Here the corresponding bricks ordered by the MES system should be picked and returned to the mobile robot. This is the task each robot cell has to fulfil, and just like in the case of the mobile platform, the process can be subdivided into smaller tasks, which we will introduce in the upcoming sections.
 
 
 % Please keep sections separated in their designated folders and only reference them here using the input tag
@@ -18,6 +16,7 @@ Each team was provided with one robot cell, equipped with a Kuka KR 6 manipulato
 \input{ch/robot_cell/sec/safety}
 \input{ch/robot_cell/sec/vision}
 \input{ch/robot_cell/sec/grasp}
+\input{ch/robot_cell/sec/main}
 \input{ch/robot_cell/sec/hmi}
 
 

@@ -2,8 +2,8 @@
 \section{Flow control overview} % (fold)
 \label{sec:mr_flow_control_overview}
 
-As explained in the chapter \ref{chap:mes_server_chapter}, the MES server sends an order and the clients have to read it and act consequently.
-In the case of the mobile robot, there is a node in charge of do all the necessary steps in order to complete the order.
+As explained in the chapter \ref{chap:mes_server_chapter}, the MES server sends an order and the clients have to read it and act accordingly.
+In the case of the mobile robot, there is a node in charge of doing all the necessary steps in order to complete the order.
 
 The flow control of the mobile robot is depicted in the figure \ref{fig:flow_control}.
 This is:
@@ -26,7 +26,7 @@ This is:
 
 This process is handled by the \emph{main node}, and this is the highest abstraction level in the control of the robot.
 It is responsible of coordinate and actuate a second layer of abstraction which, at the same time, will be responsible of directly actuate the hardware.
-The communications between the \emph{main node} an the second layer of abstraction, is shown in the figure \ref{fig:main_connections}.
+The communications between the \emph{main node} and the second layer of abstraction, is shown in the figure \ref{fig:main_connections}.
 
 \begin{figure}[H]
 	\centering
@@ -38,8 +38,8 @@ The communications between the \emph{main node} an the second layer of abstracti
 The main node has also an internal state of the robot represented in three states: \emph{idle}, \emph{auto} and \emph{manual}. 
 The mode \emph{idle} means that the robot is not moving or executing any action. 
 The mode \emph{auto} means that is processing an order and, consequently, it can be moving. \emph{Manual} stands for when the robot is being moved manually with the HMI. 
-The states are intrinsically exclusive and the robot can only be controller manually if the robot is not processing an order.
-This avoids the possibility of the user to interfere in the order status increasing the stability and reliability.
+The states are intrinsically exclusive and the robot can only be controlled manually if the robot is not processing an order.
+This avoids the possibility of the user to interfere with the order status, thus increasing the stability and reliability.
 
 The connections are bidirectional and their functions are:
 \begin{enumerate}

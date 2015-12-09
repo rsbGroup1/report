@@ -2,17 +2,18 @@
 \section{Frobomind} % (fold)
 \label{sec:mr_frobomind}
 
-\textbf{Martin}\\
+The overarching architecture on the mobile platform is the FroboMind architecture. The architecture was originally designed for field robotics but suits the tasks of the mobile platform well. The resulting system on the mobile platform partially conforms to the original FroboMind architecture. One of the common links here are the centralized command structure or decision making. This consist of the Main and Navigation Controller nodes. The Main node receives the mission and determines the next command to execute. This can be moving to a position, operating the tipper or communicating with the controlling MES server. If navigation is required the Navigation Controller itself performs the same type of operation, but only with respect to navigation. It has a list of skills available, and combines these to achieve its goal. \\
+Another aspect of the FroboMind architecture used on the mobile platform is the handling of safety. The entire system on the mobile platform will be described in detail throughout the chapter. 
 
-Describe ROS here as well. 
+The system is based on the Robot Operating System (ROS). This communication middleware handles communication between processes. The benefit of using ROS is the standardisation of communication between components. This standardisation makes it possible to easily replace and reuse components. 
+As ROS has a substantial user community, a large amount of readily available components can be used with minimum modification. Some of the components  from the ROS community used in this project are the localization (AMCL) and navigation in the open environment (move\_ base). 
+A more detailed description of these components are to be found in \ref{sub:mr_free_navigation}. These advanced components also causes some divergence from the original FroboMind architecture as they overreach several different aspects of the architecture. 
 
-A short description of FroboMind, what it is, the benefit of using it in comparison to a purely ROS based system, and how we use it now...
 
-FroboMind is a ..
 
 	\subsection{Frobomind interface} % (fold)
 	\label{sub:mr_frobomind_interface}
-	The Frobomind interface is in charge of transform the hardware sensors values into ROS messages that can be used by the user.
+	The Frobomind interface is in charge of transforming the hardware sensors values into ROS messages that can be used by the system.
 	This is implemented as a ROS package given inside of the Frobomind framework.
 	A small modification in this package has been made so the status of the battery can be read.
 	This allows the robot to create subroutines of charging when needed and continuing with the previous task when charged.

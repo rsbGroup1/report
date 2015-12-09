@@ -31,6 +31,22 @@ The orientation of the bricks is always with respect to the y-axis of the frame 
 	
 Finally collision avoidance is done by testing if any obstacles is in the grasp path for a brick. The grasp path for a brick is the area the two fingers of the end effector travels when trying to grasp the brick. Figure \ref{fig:rc_vision_collision} shows a example where the two bold black lines illustrates the end effector fingers. The area encapsulated by the stripped blue lines is the grasp path area for the grasp when trying to grasp the red brick illustrated by a red rectangle. A grasp path area is then tested against all other bricks except the brick to be grasped. Separating axis theorem\cite{Gottschalk:1996:OHS:237170.237244} is used to test if the rectangular grasp area is colliding with the rectangular brick areas defined by OBB's.
 
-Since the positions of the bricks are found in the image and thus in pixels, it needs to be translated to the distance metric that the robot and gripper are using, namely meters. The pixel to meter conversion was archived using a simple method in which four corner points were marked on the conveyor and the distance between these was measured. The same distance was measured on the image in pixels. The different measurements was summed and the average scale found. It was assumed that if the setup was kept static the scale would be valid for a longer period.
+Since the positions of the bricks are found in the image and thus in pixels, it needs to be translated to the distance metric that the robot and gripper are using, namely meters. The pixel to meter conversion was archived using a simple method in which four corner points were marked on the conveyor and the distance between these was measured. The same distance was measured on the image in pixels. The different measurements was summed and the average scale found. It was assumed that if the set-up was kept static the scale would be valid for a longer period.
 
-  
+Figure \ref{fig:rc_vision_ex1} and \ref{fig:rc_vision_ex2} shows two results of the vision algorithm. The white box defines the area that a brick can be picked within. The contour of a detected brick is drawn with the color detected. The width of the contour if either thick or thin. Thick illustrates that the brick is pick-able thus not in collision and within the workspace. The green color marks a \textit{monster}, a brick or collection of bricks that is not detected as a valid brick. 
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\textwidth]{figs/rc_vision_ex1}
+            \caption{}
+            \label{fig:rc_vision_ex1}
+        \end{subfigure}
+        \hspace{10pt}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\textwidth]{figs/rc_vision_ex2}
+            \caption{Two blue bricks and a \textit{monster}}
+            \label{fig:rc_vision_ex2}
+    \end{subfigure}
+    \caption{Example of vision output}
+    \end{figure}

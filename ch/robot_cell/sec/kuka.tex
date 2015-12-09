@@ -3,4 +3,8 @@
 \section{Kuka Robot Controller}
 \label{sec:rc_kuka}
 %%---------------------------------------------------------------------------
-..
+A Kuka ROS node is provided for controlling the robot arm in the robot cell. This makes it possible to communicate and exchange information such as if it is currently moving and what the configuration is. The robot can be moved in configuration space with a given speed and acceleration. \\
+
+ROS services is provided for the above functions and acts as the interface between the Kuka actions and the main application.\\
+
+Some issues were experienced with the Kuka setup when RSI packages was lost due to excess traffic in the switch used to connect the devices. When this occurred the robot controller stopped and the robot could not be moved before a manual reconnection. This situation could be handled by switching the state of the system to \textit{idle}, reconnecting the robot and switching back to \textit{auto}-mode. The system would then continue from the stopping point.

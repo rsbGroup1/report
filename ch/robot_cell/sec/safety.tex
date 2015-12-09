@@ -3,4 +3,8 @@
 \section{Safety} 
 \label{sec:rc_safety}
 %%---------------------------------------------------------------------------
-..
+The safety in the robot cell consists of a laser beam from Sick mounted in the entrance of the cell. The safety signal is directly connected the Kuka Controller unit and the robot is thus reacting immediately without requiring user interacting. This leaves the conveyor belt, gripper and the Lego sorting system aside. \\
+
+The safety signal can be fetched through the Kuka RSI interface which is provided in ROS format. This allows the system to detect when the safety signal is changing and react upon it. This reaction consists of stopping all actions hereby all physical movements and switching state from \textit{running} to \textit{idle}. The order won't be cleared as such, making it possible to continue when the cell is safe again. \\
+
+

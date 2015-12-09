@@ -1,7 +1,8 @@
 %!TEX root = ../../../main.tex
 %%---------------------------------------------------------------------------
-\section{Conveyor Belt Control 
-\label{sec:conveyor_belt_sec}}
+\section{Conveyor Belt Controller} 
+\label{sec:conveyor_belt_sec}
 %%---------------------------------------------------------------------------
-Structured Text program on PLC \\
-Serial communication 
+The conveyor belt is driven by an AC motor and requires a frequency generator in order to move. The provided frequency generator can either be manually controlled or by a $24V$ digital interface. The interface between the controlling computer and the frequency generator is a PLC. A PLC is an industrial \textit{computer} with $24V$ IO interface and is logic driven. This can be programmed in different ways such as Ladder Diagrams, Structured Text and Function Block Diagrams.\\ 
+
+The PLC in this project is programmed in Structured Text and is simply set up to respond to some serial commands. This makes it possible to start, stop and change the direction of the conveyor belt from an external serial connection.

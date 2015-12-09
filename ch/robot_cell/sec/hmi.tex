@@ -3,24 +3,15 @@
 \section{Human Machine Interface}
 \label{sec:rc_hmi}
 %%---------------------------------------------------------------------------
--Develop an interface for the robot cell capable of:\\
--Monitor the robot components current state and position.\\
--Monitor and parameter adjustments of the camera system.\\
--Manually control the robot, conveyor and gripper position and state\\
--Inform the MES server of the robot availability state\\
--Manual or automatic mode.\\
--Overall equipment effectiveness parameters\\	
+A separate Human Machine Interface (HMI) is developed for controlling the robot cell. This allows the user to control relevant parameters from an intuitive GUI. 
+
+The HMI is implemented as a plugin to RobWorkStudio. This allows the HMI to act alongside the visual representation of the work-cell allowing a real-time simulation of the actions.
+
+Figure \ref{fig:rc_hmi} shows the HMI plugin. All system elements are using the log for error and information messages. The user is able to manually control the robot, conveyor and gripper. Some camera settings can be directly controlled from the HMI and the video feed shows a direct view of either the raw or vision applied image. 
 
 	\begin{figure}[H]
 		\centering
 	    \includegraphics[width=0.95\textwidth]{rc_hmi}
 	    \caption{HMI}
 		\label{fig:rc_hmi}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-	    \includegraphics[width=0.95\textwidth]{rc_hmi_full}
-	    \caption{Full HMI with simulated work-cell shown}
-		\label{fig:rc_hmi_full}
 	\end{figure}

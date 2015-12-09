@@ -45,10 +45,10 @@ This is in charge of find the path, and actions associated to that path, given t
     \subsection{Graph search} % (fold)
     \label{sub:mr_graph_search}
     In order to find the most optimal path between two nodes in the graph a graph search algorithm has been implemented.
-    All the transferences between states have an associated cost which is used by a Breadth First Search (BFS).
+    All the transfers between states have an associated cost which is used by a Breadth First Search (BFS).
 
     The BFS is an algorithm of searching in graphs that explores all the neighbors of the root, then the neighbors of this ones etc.
-    Is a complete search algorithm and optimal meaning that will always find the optimal solution.
+    BFS is a complete search algorithm and optimal meaning that will always find the optimal solution.
     In this case as the cost between nodes is a given distance, the BFS will always find the shortest path.
     
     The negative part of the BFS is the space complexity but due to the graph being rather small, the search time is in the order of milliseconds.

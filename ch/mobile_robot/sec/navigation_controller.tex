@@ -26,8 +26,7 @@ This is in charge of finding the path, and actions associated to said path, give
     \subsection{Skills} % (fold)
     \label{sub:skills}
     \textbf{update skills}\\
-    As stated before, the skills are states of the robot in which it changes its physical condition.
-    They let the robot change its state and position.
+    As stated before, the skills are available actions to transfer the robot from one navigation state to another. They let the robot change its state and position.
     The implementation is based on a couple between one of the navigation types and some information from the sensors used as a condition.
     The skills designed and implemented are:
     \begin{itemize}
@@ -39,7 +38,15 @@ This is in charge of finding the path, and actions associated to said path, give
         \item Go to free position
         \item Detect obstacles
         \item Wait
-    \end{itemize}
+        \item Specialized charging skill
+        \item Initialising the AMCL 
+    \end{itemize}    
+	An example of the skills associated with the transition from one node to another is shown in figure \ref{fig:mr_graph}. The skill list shown only facilitate the transfer when exiting from workcell 1, due to the use of the follow line until relative distance. This distance will be different for each workcell.
+
+The navigation skills have previously been described. The specialized charging skill combines multiple of the other skills. Initially the robot moves to a position in free space. Then it follows a line until a certain LIDAR distance. Here it waits 10 seconds to see if the battery level has risen. If it has risen the state is set to charge. Otherwise the robot reverses and restarts the process. \\
+The last skill, initialising the AMCL, is used when the robot transitions from the line navigation to free navigation. This is necessary because the AMCL looses its position when the robot moved into the robot cells.
+	
+	
     % subsection skills (end)
 
     \subsection{Graph search} % (fold)

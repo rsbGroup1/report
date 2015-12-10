@@ -74,7 +74,7 @@ In the following subsections the data processing made with each of the sensors i
 	\label{ssub:qr_detection_and_read}
 	Due to the QR detection being done while moving, the image suffers from blur.
 	This could be reduced by a Wiener motion noise filter but this is computationally expensive, so another approach has been taken.
-	Instead, a fast shape detection is used. If a rectangle of a predefined size is detected, the speed is reduced until the blur no longer affects to the QR reading.
+	Instead, with inspiration from other class mates a fast shape detection is used. The shape detector looks for an white contour in the image which encapsulates a number of black elements. If a QR shape is detected, the speed is reduced until the blur no longer affects to the QR reading.
 
 	The QR detection is made by using the Zlib libraries \cite{zlib}. 
 	These give you the ability of easily read the information contained in a QR code.

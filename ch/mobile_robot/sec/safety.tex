@@ -1,10 +1,10 @@
 %!TEX root = ../../../main.tex
 \section{Safety system} % (fold)
 \label{sec:mr_safety_system}
-\textbf{Why are we NOT using Safety Eye? (Answer: It sucks.) But write about why.}
 The safety in the mobile robot is intrinsic in all the nodes that allow its movement.
-There are clearly two aspects to talk about: (1) the \textbf{incident handler} is based on the frobomind given, and it receives some signal input and when they are correct outputs an \emph{activation} signal giving way the robot to move.
-(2) On the other hand, the \textbf{obstacle detector} is used to feed another skill (see section \ref{sub:skills}) that changes the speed, or even stops, the robot depending on the distance of the obstacle detected by the LIDAR.
+Additionally the Safety Eyes was supposed to be used to detect humans in the area close to the stairs. However due it not working, it was not being used.
+There then are two aspects to talk about: (1) the \textbf{incident handler} based on the the given frobomind implementation. Based on certain inputs, an \emph{activation} signal is created, allowing the robot to move.
+(2) On the other hand, the \textbf{obstacle detector} is used to feed another skill (see section \ref{sub:skills}) that changes the speed, or even stops, the robot depending on the distance of obstacles detected by the LIDAR.
 This can be activated or disabled depending on the situation.
 	\subsection{Incident handler} % (fold)
 	\label{sub:mr_incident_handler}
@@ -37,12 +37,12 @@ This can be activated or disabled depending on the situation.
 
 	\subsection{Obstacle detector} % (fold)
 	\label{sub:mr_obstacle_detector}
-	Its function consist of read all the distances information from the LIDAR and, given a detection angle and two thresholds (\emph{proximity alert} and \emph{colliding}), output a signal which will slow down or stop the robot.
+	Its function consist of reading all the distances information from the LIDAR and, given a detection angle and two thresholds (\emph{proximity alert} and \emph{colliding}), output a signal which will slow down or stop the robot.
 	The obstacle detector is used inside of an skill (see section \ref{sub:skills}) so it can be activated or disabled when necessary.
 
 	In practice the obstacle detector is only used in places where (1) there is a risk to crash and (2) its behavior doesn't affect to the main one.
-	This means that, for example, inside of the robotic arm workcell it keeps disabled due to (1) the robot cannot crash with any moving agent and (2) due to the proximity to other static parts inside the workcell, it will be in the \emph{proximity alert} mode all the time. 
-	To avoid this, the obstacle detector can be disabled or enabled as a skill.
+	This means that, for example, inside of the robotic arm workcell it is disabled due to (1) the robot cannot crash with any moving agent and (2) due to the proximity to other static parts inside the workcell, it would be in the \emph{proximity alert} mode all the time. 
+
 	% subsection obstacle_detector (end)
 
 	The output of the obstacle detector can be three different exclusive states: (1) \emph{safe}, (2) \emph{proximity alert} and (3) \emph{colliding}. 
@@ -50,7 +50,6 @@ This can be activated or disabled depending on the situation.
 	The thresholds are expressed in the same units as the distance received from the LIDAR being in our project 40 cm for \emph{proximity alert} and 15 cm for \emph{colliding}.
 	When in \emph{proximity alert} the robot will slow down its movement (any) in a factor of 0.5 and when in \emph{colliding} will stop.
 
-	The limitations of this system is that, being the LIDAR in the front, only the obstacles found in the front of the robot can be detected.
+	The limitations of this system is that with the LIDAR being mounted in the front, only obstacles which are in the area of the LIDAR can be detected.
 	So no obstacles in the sides and behind are detected and these movements are "blind".
-	The front detection can be adjusted given the angle of detection desired.
 % section safety_system (end)

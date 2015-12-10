@@ -31,9 +31,9 @@ In the following subsections the data processing made with each of the sensors i
 	\label{ssub:line_detection}
 	Speed and robustness have been the priority when designing the line detection.
 	The filter works at 30 fps and with a extremely low failure rate.
-	However, a inertia in the filter has been also added so this will return the last detected point during a certain time in case the line stopped being detected.
+	However, an inertia in the filter has also been added, so the last detected point will be returned during a certain time in case the line has been stopped being detected.
 
-	Due to the line follower will adjust the PID given a reference point, the full image doesn't need to be interpreted.
+	Due to the line follower adjusting the PID given a reference point, the full image doesn't need to be interpreted.
 	Because the reference point is going to be the center of the image (read section \ref{sub:mr_line_navigation}), the image is cropped with a vertical offset about the reference point.
 	The width of the image is not cropped so the horizontal deviation can be measured in the largest range possible.
 	After this crop, the image is binarized with an RGB threshold which give a robust detection of the black line.
@@ -72,11 +72,11 @@ In the following subsections the data processing made with each of the sensors i
 
 	\subsubsection{QR detection and read} % (fold)
 	\label{ssub:qr_detection_and_read}
-	Due to the QR detection is made when moving, the image suffer a blur.
-	This can be reduced with a Wiener motion noise filter but this is computationally expensive, so another approach has been taken.
-	Instead, a fast shape detection is used, and if a rectangle of a determined size is detected, the speed is reduced until get a blur that doesn't affect to the QR reading.
+	Due to the QR detection being done while moving, the image suffers from blur.
+	This could be reduced by a Wiener motion noise filter but this is computationally expensive, so another approach has been taken.
+	Instead, a fast shape detection is used. If a rectangle of a predefined size is detected, the speed is reduced until the blur no longer affects to the QR reading.
 
-	The QR detection is made by making use of the Zlib libraries \cite{zlib}. 
+	The QR detection is made by using the Zlib libraries \cite{zlib}. 
 	These give you the ability of easily read the information contained in a QR code.
 	% subsubsection qr_detection_and_read (end)
 
@@ -85,7 +85,7 @@ In the following subsections the data processing made with each of the sensors i
 
 	\subsection{LIDAR processing} % (fold)
 	\label{sub:mr_lidar_processing}
-	The provided LIDAR (SICK TiM310) is capable of measuring the distance in 270 degrees, however due to the setup on the robot only about 200 degrees are used. The SICK TiM Ros Package \cite{sick_tim} allows for direct setup of minimum and maximum angles and publishes the measured points as a LaserScan message. This message then is directly used by the various skills.
+	The provided LIDAR (SICK TiM310) is capable of measuring the distance in 270 degrees, however due to the setup on the robot, only about 200 degrees are used. The SICK TiM Ros Package \cite{sick_tim} allows for direct setup of minimum and maximum angles and publishes the measured points as a LaserScan message. This message then is directly used by the various skills.
 	% subsection lidar_processing (end)
 
 	\subsection{Combined frobit odometry} % (fold)

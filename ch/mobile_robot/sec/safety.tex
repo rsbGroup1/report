@@ -22,15 +22,20 @@ This can be activated or disabled depending on the situation.
 		\label{ssub:mr_deadman}
 		The deadman signal is used by the navigators to actually perform a movement.
 		As stated previously, the signal needs to be sent in intervals lower to 50 milliseconds and be true.
-		The deadman signal received in the incident handler doesn't contain information about who is the sender, but is not a problem due to the navigators are made so they are exclusive.
-		This means, that only one deadman signal is received from one navigator.
+		The deadman signal received in the incident handler does not contain 
+		information about the sender, but it is not a problem due to the 
+		navigators being mutually exclusive.
+		This means that only one deadman signal is received from one navigator.
 		% subsubsection deadman (end)
 
 		\subsubsection{Critical fault} % (fold)
 		\label{ssub:mr_critical_fault}
 		The critical fault signal is controlled by the main controller of the robot.
 		This node, as explained in the section \ref{sec:mr_flow_control_overview}, controls among others the mode of the robot.
-		Only in the modes \emph{manual} and \emph{auto} this signal is activated meaning that if the robot is in \emph{idle}, either because there was a critical fault in the robot or because manually was stopped, the robot cannot move.
+		Only in the modes \emph{manual} and \emph{auto} this signal is 
+		activated, meaning that if the robot is in \emph{idle}, either because 
+		there was a critical fault, or it was manually stopped, the robot 
+		cannot move.
 		As stated previously, the signal needs to be sent in intervals lower to $50ms$ and be true.
 		% subsubsection critical_fault (end)
 	% subsection incident_handler (end)

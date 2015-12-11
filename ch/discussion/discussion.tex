@@ -6,18 +6,24 @@ Following the structure of the report this is divided in two parts: (1) the mobi
 
 	\section{Mobile robot} % (fold)
 	\label{sub:mobile_robot}
-
-	% section mobile_robot (end)
+	Based on the results presented in the section \ref{chap:system_test_chapter}, some hardware proposals are suggested:
 	\begin{itemize}
 		\item Have better space awareness, perhaps, two LIDARS.
 		\item Improve runtime. Better batteries, reduce the power consumption.
 		\item Improve reliability of the tipper. Perhaps improving the materials and the building quality of the assembly.
 		\item Use global shutter cameras so the motion blur can be reduced.
 		\item Improve mechanical implementation of the robot to increase robustness and reliability of the robot.
-		\item Improve free navigation. Having several local path planner for the different purposes in the free navigation. Having the camera localization inside the box will help too.
+		\item  Having the camera localization inside the box will help to have a more robust position of the robot.
 	\end{itemize}
+	And as an improvement in the software side:
+	\begin{itemize}
+		\item Improve free navigation. Having several local path planner for the different purposes in the free navigation.
+		\item The relative navigation can be improved using a PID implementation.
+		\item The HMI can be improved in the UI side as well as the functionality. A web service for controlling not only the mobile robot, but the robot workcell and the MES Server can be done.
+		\item The general speed of the robot can be increased in order to increase the productivity.
+	\end{itemize}
+	% section mobile_robot (end)
 
 	\section{Robot workcell} % (fold)
 	\label{sub:robot_workcell}
-
-% section robot_workcell (end)
+% section robot_workcell (end)j

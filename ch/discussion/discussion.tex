@@ -8,16 +8,17 @@ Following the structure of the report this is divided in two parts: (1) the mobi
 	\label{sub:mobile_robot}
 	Based on the results presented in the section \ref{chap:system_test_chapter}, some hardware proposals are suggested:
 	\begin{itemize}
-		\item Have better space awareness, perhaps, two LIDARS.
-		\item Improve runtime. Better batteries, reduce the power consumption.
+		\item Have better space awareness, perhaps, given two LIDARS.
+		\item Improve runtime. This can be achieved either with better batteries or reducing the power consumption.
 		\item Improve reliability of the tipper. Perhaps improving the materials and the building quality of the assembly.
-		\item Use global shutter cameras so the motion blur can be reduced.
-		\item Improve mechanical implementation of the robot to increase robustness and reliability of the robot.
-		\item  Having the camera localization inside the box will help to have a more robust position of the robot.
+		\item Use global shutter cameras so the motion blur can be reduced. This will allow to detect QR when moving fast avoiding have to stop to read the data.
+		\item Improve the mechanical implementation of the robot to increase robustness and reliability of the robot.
+		\item Make a more modular robotic platform in order to let the user to change the shape of the robot to adjust it to the personal purposes.
+		\item Having the camera localization inside the box will help to have a more robust position of the robot.
 	\end{itemize}
 	And as an improvement in the software side:
 	\begin{itemize}
-		\item Improve free navigation. Having several local path planner for the different purposes in the free navigation.
+		\item Improve free navigation. An option could be have several local path planner for the different purposes in the free navigation.
 		\item The relative navigation can be improved using a PID implementation.
 		\item The HMI can be improved in the UI side as well as the functionality. A web service for controlling not only the mobile robot, but the robot workcell and the MES Server can be done.
 		\item The general speed of the robot can be increased in order to increase the productivity.

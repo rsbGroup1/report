@@ -3,7 +3,7 @@
 \label{sec:mr_sensors_and_data_processing}
 In the section \ref{sec:mr_hardware} the different sensors of the robot were explained.
 In this section, the information gathered by these sensors and their processing is explained.
-Six different kind of sensors have been used in order to fulfill the requirements of the project.
+Six different kind of sensors have been used in order to fulfil the requirements of the project.
 These are:
 \begin{enumerate}
 	\item The camera, explained in \emph{camera processing} (\ref{sub:mr_camera_processing}) to follow the line and detect QR codes.
@@ -30,7 +30,7 @@ In the following subsections the data processing made with each of the sensors i
 	\subsubsection{Line detection} % (fold)
 	\label{ssub:line_detection}
 	Speed and robustness have been the priority when designing the line detection.
-	The filter works at 30 fps and with a extremely low failure rate.
+	The filter works at 30 FPS and with a extremely low failure rate.
 	However, an inertia in the filter has also been added, so the last detected point will be returned during a certain time in case the line has been stopped being detected.
 
 	Due to the line follower adjusting the PID given a reference point, the full image doesn't need to be interpreted.
@@ -40,13 +40,13 @@ In the following subsections the data processing made with each of the sensors i
 	The line is then searched with a virtual horizontal line over the reference point.
 	This line will cross with the black line giving two intersection points that, averaged, give the center of the line.
 
-	In order to increase the robustness another 10 virtual lines are used equally with a vertical offset from the original line.
+	In order to increase the robustness 10 equally spaced vertical lines are used. 
 	The process is the same for them and the final point is the averaged one from the intersection points that are closer to themselves.
 	This is done due to some noise can appear in the image (see figure \ref{fig:mr_camera_processing_2}) or a crossing line can be given (see figure \ref{fig:mr_camera_processing_3}).
-	The 10 parallel lines (with a total accumulated offset bigger than the crossing line width) reduce the failure rate to the level of turning the filter into a very robust and fast enough filter.
+	The 10 parallel lines reduces the failure rate and makes the filter very robust and fast.
 	A clear representation is shown in the figure \ref{fig:mr_camera_processing_1}.
-
 	The implementation has been carried out using the OpenCV libraries \cite{opencv}.
+	
 		\begin{figure}
 	        \centering
 	        \begin{subfigure}[H]{0.296\textwidth}
@@ -74,10 +74,10 @@ In the following subsections the data processing made with each of the sensors i
 	\label{ssub:qr_detection_and_read}
 	Due to the QR detection being done while moving, the image suffers from blur.
 	This could be reduced by a Wiener motion noise filter but this is computationally expensive, so another approach has been taken.
-	Instead, with inspiration from other class mates a fast shape detection is used. The shape detector looks for an white contour in the image which encapsulates a number of black elements. If a QR shape is detected, the speed is reduced until the blur no longer affects to the QR reading.
+	Instead, with inspiration from other class mates a fast shape detection is used. The shape detector looks for a white contour in the image which encapsulates a number of black elements. If a QR shape is detected, the speed is reduced until the blur no longer affects the QR reading.
 
-	The QR detection is made by using the Zlib libraries \cite{zlib}. 
-	These give you the ability of easily read the information contained in a QR code.
+	The QR detection is made using the Zlib libraries \cite{zlib}. 
+	This gives the ability of easily reading the information contained in a QR code.
 	% subsubsection qr_detection_and_read (end)
 
 
@@ -85,7 +85,7 @@ In the following subsections the data processing made with each of the sensors i
 
 	\subsection{LIDAR processing} % (fold)
 	\label{sub:mr_lidar_processing}
-	The provided LIDAR (SICK TiM310) is capable of measuring the distance in 270 degrees, however due to the setup on the robot, only about 200 degrees are used. The SICK TiM Ros Package \cite{sick_tim} allows for direct setup of minimum and maximum angles and publishes the measured points as a LaserScan message. This message then is directly used by the various skills.
+	The provided LIDAR (SICK TiM310) is capable of measuring the distance in 270 degrees, however due to the setup on the robot, only about 200 degrees are used. The SICK TiM Ros Package \cite{sick_tim} allows for direct set-up of minimum and maximum angles and publishes the measured points as a LaserScan message. This message then is directly used by the various skills.
 	% subsection lidar_processing (end)
 
 	\subsection{Combined frobit odometry} % (fold)

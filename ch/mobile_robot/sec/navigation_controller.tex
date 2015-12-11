@@ -20,12 +20,11 @@ This is in charge of finding the path, and actions associated to said path, give
     \end{figure}
 
     As an example, in the transference between the node \emph{"Workcell Exit"} and \emph{"Line End"}, the associated conditions are shown. 
-    These are: first, needs to \emph{turn 90 degrees clockwise}, then \emph{follow the line until the QR "line\_out"} is detected, all this done with the collision detector turned on and changing the internal position of the robot in the end.
+    These are: first, needs to \emph{turn 90 degrees clockwise}, then \emph{follow the line until the QR "line\_end"} is detected, all this done with the collision detector turned on and changing the internal position of the robot in the end.
     % subsection navigation_state_representation (end)
 
     \subsection{Skills} % (fold)
     \label{sub:skills}
-    \textbf{update skills}\\
     As stated before, the skills are available actions to transfer the robot from one navigation state to another. They let the robot change its state and position.
     The implementation is based on a couple between one of the navigation types and some information from the sensors used as a condition.
     The skills designed and implemented are:
@@ -41,7 +40,7 @@ This is in charge of finding the path, and actions associated to said path, give
         \item Specialized charging skill
         \item Initialising the AMCL 
     \end{itemize}    
-	An example of the skills associated with the transition from one node to another is shown in figure \ref{fig:mr_graph}. The skill list shown only facilitate the transfer when exiting from workcell 1, due to the use of the follow line until relative distance. This distance will be different for each workcell.
+	An example of the skills associated with the transition from one node to another is shown in figure \ref{fig:mr_graph}. The skill list shown only facilitate the transfer when exiting from work-cell 1, due to the use of the follow line until relative distance. This distance will be different for each work-cell.
 
 The navigation skills have previously been described. The specialized charging skill combines multiple of the other skills. Initially the robot moves to a position in free space. Then it follows a line until a certain LIDAR distance. Here it waits 10 seconds to see if the battery level has risen. If it has risen the state is set to charge. Otherwise the robot reverses and restarts the process. \\
 The last skill, initialising the AMCL, is used when the robot transitions from the line navigation to free navigation. This is necessary because the AMCL looses its position when the robot moved into the robot cells.
@@ -54,7 +53,7 @@ The last skill, initialising the AMCL, is used when the robot transitions from t
     In order to find the most optimal path between two nodes in the graph a graph search algorithm has been implemented.
     All the transfers between states have an associated cost which is used by a Breadth First Search (BFS).
 
-    The BFS is an algorithm of searching in graphs that explores all the neighbors of the root, then the neighbors of this ones etc.
+    The BFS is an algorithm of searching in graphs that explores all the neighbours of the root, then the neighbours of this ones etc.
     BFS is a complete search algorithm and optimal meaning that will always find the optimal solution.
     In this case as the cost between nodes is a given distance, the BFS will always find the shortest path.
     

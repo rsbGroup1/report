@@ -2,17 +2,24 @@
 \section{Hardware} % (fold)
 \label{sec:mr_hardware}
 
-\textbf{Provided hardware}
-\\
-\\
-The platform for the mobile robot revolves around the SDU FrobitPro wheeled robot, mounted with a tip loading platform. The whole system is driven by a micro-atx computer system with Ubuntu $14.04$ and ROS Indigo to form the Frobomind system. As power source is a $12V$ $7000mAh$ lead battery (same type as used for small mopeds) and a SDU Frobomind controller, that also act as a controller for the driving motors. To enable a continuous operation of the mobile robot, an intelligent CTEK $5.0A$ charger was used. This provided enough charging capability to test the system for an indefinite time while connected.\\ An overview of the robot can be seen in Figure \ref{fig:frobit}. It was arbitrarily chosen that the front of the robot would be in the end with the small wheel.\\
+\subsection{Provided hardware}
+The platform for the mobile robot revolves around the SDU FrobitPro, mounted 
+with a tip loading platform. The whole system is driven by a micro-atx computer 
+system with Ubuntu $14.04$ and ROS Indigo. As power source is a $12V$ $7000mAh$ 
+lead battery (same type as used for small mopeds) and a SDU Frobomind 
+controller, that also act as a controller for the driving motors. To enable a 
+continuous operation of the mobile robot, an intelligent CTEK $5.0A$ charger 
+was used. This provided enough charging capability to test the system for an 
+indefinite time while connected.\\ An overview of the robot can be seen in 
+Figure \ref{fig:frobit}. It was arbitrarily chosen that the front of the robot 
+would be in the end with the small wheel.\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{frobit_profile}
 	\caption{FrobitPro Robot}
 	\label{fig:frobit}
 	\end{figure}
-\textbf{The main components for the tipper:}
+\subsection{The main components for the tipper:}
 \begin{itemize}
 	\item PK-244-01A Bipolar Stepper motor
 	\item Arduino UNO
@@ -27,9 +34,9 @@ To obtain valuable information about the surrounding environment, following sens
 	\item Logitech Webcam
 \end{itemize} 
 
-The use of these sensors will be described in the appropriate sections. The IMU and LIDAR was on lend from the student library.\\
+The use of these sensors will be described in the appropriate sections.\\
 
-\textbf{Modifications}\\
+\subsection{Modifications}
 Along the development and testing phase of the project it was discovered that custom hardware modifications was necessary for the sensors to be mounted properly to the robot, in regards to protection of the sensors and be able to make proper use of these.
 
 It was decided pre-hand that it was not allowed to make adjustments (e.g. cutting and drilling) in the base plate of the robot, of which it was chosen that the line-following camera would be mounted below the tipper without obstructing the LIDAR's field of view. This can be seen in figure \ref{fig:webcam_mr}.

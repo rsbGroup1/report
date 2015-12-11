@@ -1,8 +1,10 @@
 %!TEX root = ../../main.tex
-%----------------------------------------------------------------------------
-\chapter{Discussion}\label{chap:discussion}
-%----------------------------------------------------------------------------
+\chapter{Discussion}
+\label{chap:discussion}
+In this chapter the discussion about the final status of the project, as well as future work or improvements, is presented.
+Following the structure of the report this is divided in two parts: (1) the mobile robot and (2) the robot workcell.
 
+<<<<<<< HEAD
 The role of the robot cell was to simply detect and select the bricks that matched the order sent by the MES Server. This was executed by the vision detection task and the grasping task using the gripper and robot. 
 
 The vision algorithm being able of detecting and identifying bricks while the conveyor belt was running, performed good. A precise calibration of the scene, camera and gripper was done resulting in no erroneous grasps. The vision was independent of daylight fluctuation and no brick was marked collision-free while not being so.
@@ -17,10 +19,28 @@ A more low-level solution could consist of a better hardware set-up that results
 
 Finally in order to increase multitasking, an eye-to-hand mounting of the camera could have been chosen. This would allow the robot to grasp and move bricks while the vision could analyse the next move. 
 
+=======
+	\section{Mobile robot} % (fold)
+	\label{sub:mobile_robot}
+	Based on the results presented in the section \ref{chap:system_test_chapter}, some hardware proposals are suggested:
+	\begin{itemize}
+		\item Have better space awareness, perhaps, two LIDARS.
+		\item Improve runtime. Better batteries, reduce the power consumption.
+		\item Improve reliability of the tipper. Perhaps improving the materials and the building quality of the assembly.
+		\item Use global shutter cameras so the motion blur can be reduced.
+		\item Improve mechanical implementation of the robot to increase robustness and reliability of the robot.
+		\item  Having the camera localization inside the box will help to have a more robust position of the robot.
+	\end{itemize}
+	And as an improvement in the software side:
+	\begin{itemize}
+		\item Improve free navigation. Having several local path planner for the different purposes in the free navigation.
+		\item The relative navigation can be improved using a PID implementation.
+		\item The HMI can be improved in the UI side as well as the functionality. A web service for controlling not only the mobile robot, but the robot workcell and the MES Server can be done.
+		\item The general speed of the robot can be increased in order to increase the productivity.
+	\end{itemize}
+	% section mobile_robot (end)
+>>>>>>> 9d5dc0d3dbedd87c46aa5b302ca7a080eba6d6e4
 
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "main"
-%%% End:
+	\section{Robot workcell} % (fold)
+	\label{sub:robot_workcell}
+% section robot_workcell (end)j

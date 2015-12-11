@@ -2,24 +2,8 @@
 \chapter{Discussion}
 \label{chap:discussion}
 In this chapter the discussion about the final status of the project, as well as future work or improvements, is presented.
-Following the structure of the report this is divided in two parts: (1) the mobile robot and (2) the robot workcell.
+Following the structure of the report this is divided in two parts: (1) the mobile robot and (2) the robot work-cell.
 
-<<<<<<< HEAD
-The role of the robot cell was to simply detect and select the bricks that matched the order sent by the MES Server. This was executed by the vision detection task and the grasping task using the gripper and robot. 
-
-The vision algorithm being able of detecting and identifying bricks while the conveyor belt was running, performed good. A precise calibration of the scene, camera and gripper was done resulting in no erroneous grasps. The vision was independent of daylight fluctuation and no brick was marked collision-free while not being so.
-
-There is however room for improvements. The current implementation of the system allows only grasps on the center of the thin side on the bricks. This results in a large number of bricks being ignored due to a grasp attempt will lead to collision. 
-
-In order to increase the speed of the brick sorting the following can be considered. 
-The speed of the gripper closing and opening was quite slow. Increasing this would led to faster brick selection. 
-A suction based gripper would allow bricks to be picked even if no clear area is available around the brick. This requires the vision to be able to distinguish between bricks even if a bunch of same-coloured bricks are presented. 
-
-A more low-level solution could consist of a better hardware set-up that results in more separated bricks thus allowing more bricks to be picked. 
-
-Finally in order to increase multitasking, an eye-to-hand mounting of the camera could have been chosen. This would allow the robot to grasp and move bricks while the vision could analyse the next move. 
-
-=======
 	\section{Mobile robot} % (fold)
 	\label{sub:mobile_robot}
 	Based on the results presented in the section \ref{chap:system_test_chapter}, some hardware proposals are suggested:
@@ -40,8 +24,22 @@ Finally in order to increase multitasking, an eye-to-hand mounting of the camera
 		\item The general speed of the robot can be increased in order to increase the productivity.
 	\end{itemize}
 	% section mobile_robot (end)
->>>>>>> 9d5dc0d3dbedd87c46aa5b302ca7a080eba6d6e4
 
 	\section{Robot workcell} % (fold)
 	\label{sub:robot_workcell}
+	
+	The role of the robot cell was to simply detect and select the bricks that matched the order sent by the MES Server. This was executed by the vision detection task and the grasping task using the gripper and robot. 
+
+The vision algorithm being able of detecting and identifying bricks while the conveyor belt was running, performed good. A precise calibration of the scene, camera and gripper was done resulting in no erroneous grasps. The vision was independent of daylight fluctuation and no brick was marked collision-free while not being so.
+
+There is however room for improvements. The current implementation of the system allows only grasps on the center of the thin side on the bricks. This results in a large number of bricks being ignored due to a grasp attempt will lead to collision. 
+
+In order to increase the speed of the brick sorting the following can be considered. 
+The speed of the gripper closing and opening was quite slow. Increasing this would led to faster brick selection. 
+A suction based gripper would allow bricks to be picked even if no clear area is available around the brick. This requires the vision to be able to distinguish between bricks even if a bunch of same-coloured bricks are presented. 
+
+A more low-level solution could consist of a better hardware set-up that results in more separated bricks thus allowing more bricks to be picked. 
+
+Finally in order to increase multitasking, an eye-to-hand mounting of the camera could have been chosen. This would allow the robot to grasp and move bricks while the vision could analyse the next move. 
+
 % section robot_workcell (end)j

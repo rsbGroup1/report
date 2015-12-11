@@ -7,7 +7,7 @@ A Manufacturing Execution System (MES) server breaks down an order into tasks, s
 
 Figure \ref{fig:overall_system_diagram} shows the connections of the MES Server. In this project the resources includes three robot cells, three mobile robots and one LEGO brick dispenser. \\
 
-Due to a lack of a united MES-Sever for all teams, an individual MES Server was implemented. It acts more like a server than a MES server since it is only the robot cell and mobile robot belonging to the group that is connecting. The server has the role of acting as a communication hub between the two elements. The dispenser is not connected since no hardware is provided for the dispenser to get online. \\
+Due to a lack of a united MES-Server for all teams, an individual MES Server was implemented. It acts more like a server than a MES server since it is only the robot cell and mobile robot belonging to the group that is connecting. The server has the role of acting as a communication hub between the two elements. The dispenser is not connected since no hardware is provided for the dispenser to get online. \\
 
 From the server a user can manually request an order to be processed. The order will be sent to the respective devices and further communication between these is handled. When the server receives 'done' messages from both systems a new order can be made.
 

@@ -6,23 +6,15 @@ Following the structure of the report this is divided in two parts: (1) the mobi
 
 	\section{Mobile robot} % (fold)
 	\label{sub:mobile_robot}
-	Based on the results presented in the section \ref{chap:system_test_chapter}, some hardware proposals are suggested:
-	\begin{itemize}
-		\item Have better space awareness, perhaps, given two LIDARS.
-		\item Improve runtime. This can be achieved either with better batteries or reducing the power consumption.
-		\item Improve reliability of the tipper. Perhaps improving the materials and the building quality of the assembly.
-		\item Use global shutter cameras so the motion blur can be reduced. This will allow to detect QR when moving fast avoiding have to stop to read the data.
-		\item Improve the mechanical implementation of the robot to increase robustness and reliability of the robot.
-		\item Make a more modular robotic platform in order to let the user to change the shape of the robot to adjust it to the personal purposes.
-		\item Having the camera localization inside the box will help to have a more robust position of the robot.
-	\end{itemize}
-	And as an improvement in the software side:
-	\begin{itemize}
-		\item Improve free navigation. An option could be have several local path planner for the different purposes in the free navigation.
-		\item The relative navigation can be improved using a PID implementation.
-		\item The HMI can be improved in the UI side as well as the functionality. A web service for controlling not only the mobile robot, but the robot work-cell and the MES Server can be done.
-		\item The general speed of the robot can be increased in order to increase the productivity.
-	\end{itemize}
+	From the 24 hour test a number of issues arose. These were lack of runtime due to the battery, collisions with other robots and minor errors in QR detection and unloading of bricks. 
+	The battery issue caused a lot of time spend recharging during the test. This could be resolved by adding better batteries or reduce the power consumption.
+	Colliding with other robots often happened when they had past each other and could no longer detect each other with the LIDAR. 
+	This could be helped by adding another LIDAR to give the robot 360\degree \ vision. 
+	This could possibly also increase the the precision of the AMCL as more data points would be available. This could be a particular advantage inside the box. The marker system could also be changed to cover that area, which would give it a useful capability. 
+	The problem of reading QR codes while moving could be solved by using a global shutter camera. This would significantly reduce the motion blur. 
+	The mobile platform itself is clearly a prototype. If is was to operate it should be protected by an outer shield to protect the wiring on the robot. It could also be a useful development to make the robot modular to allow users or integrators to adapt the system for specific uses. \\
+	
+In the software part of the mobile robot improvements have been considered in free navigation by using multiple local planners. By having multiple planners they could be optimized for each stage of navigation. The HMI can be improved in the UI side as well as the functionality. A web service for controlling not only the mobile robot, but the robot workcell and the MES Server can be done.
 	% section mobile_robot (end)
 
 	\section{Robot workcell} % (fold)
@@ -30,16 +22,16 @@ Following the structure of the report this is divided in two parts: (1) the mobi
 	
 	The role of the robot cell was to simply detect and select the bricks that matched the order sent by the MES Server. This was executed by the vision detection task and the grasping task using the gripper and robot. 
 
-	The vision algorithm being able of detecting and identifying bricks while the conveyor belt was running, performed good. A precise calibration of the scene, camera and gripper was done resulting in no erroneous grasps. The vision was independent of daylight fluctuation and no brick was marked collision-free while not being so.
+The vision algorithm being able of detecting and identifying bricks while the conveyor belt was running, performed well. A precise calibration of the scene, camera and gripper was done resulting in a very small number of erroneous grasps. The vision was independent of daylight fluctuation and no brick was marked collision-free while not being so.
 
-	There is however room for improvements. The current implementation of the system allows only grasps on the center of the thin side on the bricks. This results in a large number of bricks being ignored due to a grasp attempt will lead to collision. 
+There is however room for improvements. The current implementation of the system allows only grasps on the center of the thin side on the bricks. This results in a large number of bricks being ignored due to a grasp attempt will lead to collision. 
 
-	In order to increase the speed of the brick sorting the following can be considered. 
-	The speed of the gripper closing and opening was quite slow. Increasing this would led to faster brick selection. 
-	A suction based gripper would allow bricks to be picked even if no clear area is available around the brick. This requires the vision to be able to distinguish between bricks even if a bunch of same-colored bricks are presented. 
+In order to increase the speed of the brick sorting the following can be considered. 
+The speed of the gripper closing and opening was quite slow. Increasing this would led to faster brick selection. 
+A suction based gripper would allow bricks to be picked even if no clear area is available around the brick. This requires the vision to be able to distinguish between bricks even if a bunch of same-coloured bricks are presented. 
 
-	A more low-level solution could consist of a better hardware set-up that results in more separated bricks thus allowing more bricks to be picked. 
+A more low-level solution could consist of a better hardware set-up that results in more separated bricks thus allowing more bricks to be picked. 
 
-	Finally in order to increase multitasking, an eye-to-hand mounting of the camera could have been chosen. This would allow the robot to grasp and move bricks while the vision could analyze the next move. 
+Finally in order to increase multitasking, an eye-to-hand mounting of the camera could have been chosen. This would allow the robot to grasp and move bricks while the vision could analyse the next move. 
 
 % section robot_workcell (end)j

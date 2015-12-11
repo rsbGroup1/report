@@ -30,7 +30,8 @@ of the steps.
 \label{sub:arduino_and_serial_communication}
 Setting a general serial communication to the arduino is straight-forward. The 
 speed is chosen with regards to the ROS node and a serial connection is 
-initialized with the \textbf{Serial.begin()} command. The Arduino is set up to 
+initialized with the \textbf{Serial.begin(speed)} command. The Arduino is set 
+up to 
 receive a character "u" for tipping(up), and "d" for leveling(down). When an 
 action has successfully executed, a "d" (done) is returned to the ROS node.
 % subsection arduino_and_serial_communication (end)

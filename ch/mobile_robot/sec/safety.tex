@@ -36,7 +36,8 @@ This can be activated or disabled depending on the situation.
 		activated, meaning that if the robot is in \emph{idle}, either because 
 		there was a critical fault, or it was manually stopped, the robot 
 		cannot move.
-		As stated previously, the signal needs to be sent in intervals lower to $50ms$ and be true.
+		As stated previously, the signal needs to be sent in intervals lower 
+		than $50ms$ and be true.
 		% subsubsection critical_fault (end)
 	% subsection incident_handler (end)
 
@@ -45,7 +46,8 @@ This can be activated or disabled depending on the situation.
 	Its function consist of reading all the distances information from the LIDAR and, given a detection angle and two thresholds (\emph{proximity alert} and \emph{colliding}), output a signal which will slow down or stop the robot.
 	The obstacle detector is used inside of an skill (see section \ref{sub:skills}) so it can be activated or disabled when necessary.
 
-	In practice the obstacle detector is only used in places where (1) there is a risk to crash and (2) its behaviour doesn't affect to the main one.
+	In practice the obstacle detector is only used in places where (1) there is 
+	a risk to crash and (2) its behaviour does not affect to the main one.
 	This means that, for example, inside of the robotic arm work-cell it is disabled due to (1) the robot cannot crash with any moving agent and (2) due to the proximity to other static parts inside the work-cell, it would be in the \emph{proximity alert} mode all the time. 
 
 	% subsection obstacle_detector (end)

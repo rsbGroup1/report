@@ -44,31 +44,44 @@ We have distinguished between the following types:
 
 \section{Test results}
 
-Even though in the initial phase camera connection issues caused delays in the testing process, all in all 49 iterations were performed, out of which 36 were finished successfully resulting in a success ratio of 73.47\% (see Figure \ref{fig:order_statistics} ).
+Even though in the initial phase camera connection issues caused delays in the testing process, all in all 49 iterations were performed, out of which 36 were finished successfully resulting in a success ratio of 73.47\% (details see Figure \ref{fig:order_statistics} ). The full log can be seen in Appendix \ref{"apx:log"}
+
 
 \begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{order_statistics}
-        \caption{Order statistics}
-        \label{fig:order_statistics}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{execution_time}
-        \caption{Execution time}
-        \label{fig:execution_time}
-	\end{subfigure}
-\caption{Test statistics}
+	\centering
+	\includegraphics[width=0.9\textwidth]{stress_test_pie}
+	\caption{Stress Test Results}
+	\label{fig:order_statistics}
 \end{figure}
 
-We managed to improve the speed of the system throughout the testing and on average we achieved an execution time of  9.28 minutes with a standard deviation of 3.35 (see Figure \ref{fig:execution_time}).
+We managed to improve the speed of the system throughout the testing and on average we achieved an execution time of  9.28 minutes with a standard deviation of 3.35. The highest factor in deviation in time as well as the highest error rate was due to localization errors and traffic jams inside and around the box. A combined MES-Server, that ensures only one robot moving around in the box would solve this issue completely.
 
-The two main sources of errors we have observed were originated in inter-component communication and the localization of the mobile platform. Since both are effected greatly by external factors such as congestion and uncontrollable changes in the environment caused by human and mobile robot movement, they cannot be mitigated without introducing fundamental changes to the design. 
+\textbf{Major Lessons learned during 24-hour stress test:}
+\begin{itemize}
+\item Protocol for recovery after breaking safety
+\item Reboot procedure
+\item Protocol for hot-swapping Battery
+\item Maintain good QR-Quality
+\end{itemize}
 
-Nevertheless, the fact, that after the initial difficulties no mayor errors occurred shows, that the corrected system is mostly bug free and a capable solution for the task presented.
+\textbf{Bugs fixed / improvements during 24-hour stress test:}
+\begin{itemize}
+\item Charge level handler
+\item Inverse Kinematics
+\item Increased Kuka Speed
+\item Adjusted required battery level to make one run
+\item Fixed QR Codes
+\end{itemize}
 
-
+\textbf{Open ToDo's before shipping:}
+\begin{itemize}
+\item Improve vision to not try and grab monsters
+\item Solder Tipper Motor Plug
+\item Solve unloading issue
+\item Solve Kuka Node Crashing
+\item Fix Frobit Interface Crashes
+\item MR GO node crashed once, no reason / solution found
+\end{itemize}
 
 
 

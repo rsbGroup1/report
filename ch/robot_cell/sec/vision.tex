@@ -3,29 +3,29 @@
 \section{Vision}
 \label{sec:rc_hmi_sec}
 %%---------------------------------------------------------------------------
-The vision node has the role of detecting Lego bricks on the conveyor belt using the camera. The detection of brick includes the color, size, position and orientation. This is information that is needed in order to determine whether the brick is needed or not and how to grasp it. 
+The vision node has the role of detecting LEGO bricks on the conveyor belt using the camera. The detection of brick includes the color, size, position and orientation. This is information that is needed in order to determine whether the brick is needed or not and how to grasp it. 
 
-The vision Lego detection algorithm is custom made and consists of several elements from the world of vision. Figure \ref{fig:rc_vision_steps_thor} shows the steps performed on an image in order to search for bricks. These steps are described next.\\
+The vision LEGO detection algorithm is custom made and consists of several elements from the world of vision. Figure \ref{fig:rc_vision_steps_thor} shows the steps performed on an image in order to search for bricks. These steps are described next.\\
 	
 	\begin{figure}[H]
 		\centering
 	    \includegraphics[width=1.0\textwidth]{rc_vision_thor.eps}
-	    \caption{Steps to be performed when an image is searched for Lego bricks}
+	    \caption{Steps to be performed when an image is searched for LEGO bricks}
 		\label{fig:rc_vision_steps_thor}
 	\end{figure}
 	
 The vision node is able to deliver two services. One that uses a quick method to tell whether or not any bricks can be seen in the image and one that describes the image in full detail with all relevant brick information. This is used in order to save calculation time since there is no need to request the full vision algorithm if there is no bricks.
 
-The quick method consists of only the left \textit{find blobs} part in figure \ref{fig:rc_vision_steps_thor}. This involves filtering in HSV space in order to separate the background elements from the Lego bricks. Then the image is \textit{closed} which consists of the erode and dilate process. A binary threshold is applied in order to get a binary representation of the image which is needed in blob detection. The blob detection algorithm detects the connected pixels in the image and separates them as blobs. The blobs are size filtered in order to get rid of small noisy contours. Lastly the color of the blob is determined by a custom color detection algorithm. The average RGB pixel value of all the pixels belonging the blob is calculated and the amount that the respective colors present in percentage with respect to the sum determine the correct color. Looking at the amount that the colors make up, a conclusion of the color can be made. This is robust with respect to changing light conditions and other changes to the colors. 
+The quick method consists of only the left \textit{find blobs} part in figure \ref{fig:rc_vision_steps_thor}. This involves filtering in HSV space in order to separate the background elements from the LEGO bricks. Then the image is \textit{closed} which consists of the erode and dilate process. A binary threshold is applied in order to get a binary representation of the image which is needed in blob detection. The blob detection algorithm detects the connected pixels in the image and separates them as blobs. The blobs are size filtered in order to get rid of small noisy contours. Lastly the color of the blob is determined by a custom color detection algorithm. The average RGB pixel value of all the pixels belonging the blob is calculated and the amount that the respective colors present in percentage with respect to the sum determine the correct color. Looking at the amount that the colors make up, a conclusion of the color can be made. This is robust with respect to changing light conditions and other changes to the colors. 
 
 The next step looks into fitting oriented-bounding-boxes (OBB) to the blobs, using an OpenCV\cite{opencv} implementation. This results in the size, orientation and center position of the detected element. The size and color combination is used for further brick filtering.
 
-The orientation of the bricks is always with respect to the y-axis of the frame and smallest side of the bricks. This makes it easy for grasp calculation and the smallest side is chosen since some Lego bricks can be too large for grasping on the longest side. 
+The orientation of the bricks is always with respect to the y-axis of the frame and smallest side of the bricks. This makes it easy for grasp calculation and the smallest side is chosen since some LEGO bricks can be too large for grasping on the longest side. 
 	
 	\begin{figure}[H]
 		\centering
 	    \includegraphics[width=0.5\textwidth]{rc_vision_collision.pdf}
-	    \caption{Lego brick collision detection method}
+	    \caption{LEGO brick collision detection method}
 		\label{fig:rc_vision_collision}
 	\end{figure}
 	

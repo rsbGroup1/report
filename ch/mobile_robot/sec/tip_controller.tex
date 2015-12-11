@@ -1,19 +1,39 @@
 %!TEX root = ../../../main.tex
 \section{Tip controller} % (fold)
 \label{sec:mr_tip_controller}
-\textbf{Someone}
-Description of the tipper controller. (Why, how)
 
+The purpose of tip controller is to create a simple and effective way of 
+delivering a large amount of LEGO bricks to the conveyor belt autonomously. 
+This is done by controlling the mounted belt drive with a stepper motor, an 
+H-bridge and a Arduino microcontroller. To control the limits of tipping 
+mechanism, two microswitches were added(Tip down/tip up).\\
 \subsection{Stepper controller} % (fold)
 \label{sub:stepper_controller}
-\textbf{Stephen}
+The PK-244-01A stepper motor is bipolar. This means that it requires (at least) 
+four wires to control according to the timing diagram shown in 
+\textbf{textfigure 141414}. These four wires are driven by the L298N dual 
+H-bridge which offers an simple control method. Four pins are connected to the 
+Arduino and signals on these(HIGH/LOW) controls the four wires, driven by the 
+12V line from the onboard power supply.  Consulting datasheet for the motor, a 
+minimum of 
+4V, 1.2A is required to drive the motor. Timing is calculated as a minimum of 
+3ms delay between steps in the timing diagram. To get an initial high torque 
+from the motor, a half-stepping sequence was chosen and a ramp function was 
+created to slowly start the motor and exponentially increase the speed when the 
+tip is in full motion. Due to friction in the system and less torque the 
+full-step sequence was disregarded. The arduino software has a built-in library 
+for stepper motors, but this was found difficult to manage in regards to delay 
+of the steps. 
 % subsection stepper_controller (end)
 
 \subsection{Arduino and serial communication} % (fold)
 \label{sub:arduino_and_serial_communication}
-\textbf{Someone}
+Setting a general serial communication to the arduino is straight-forward. The 
+speed is chosen with regards to the ROS node and a serial connection is 
+initialized with the \textbf{Serial.begin()} command. The Arduino is set up to 
+receive a character "u" for tipping(up), and "d" for leveling(down). When an 
+action has successfully executed, a "d" (done) is returned to the ROS node.
 % subsection arduino_and_serial_communication (end)
 
-\textbf{Stephen}
 
 % section tip_controller (end)
